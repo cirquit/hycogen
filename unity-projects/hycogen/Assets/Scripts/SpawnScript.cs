@@ -11,6 +11,6 @@ public class SpawnScript : MonoBehaviour {
 	
 
 	void FixedUpdate () {
-		
 	}
 }
+
