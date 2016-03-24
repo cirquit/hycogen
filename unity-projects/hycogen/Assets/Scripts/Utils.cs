@@ -21,13 +21,14 @@ public class Utils {
 	/*
 	 * creates a GameObject to call a LineRenderer to display a Line for an amount of time
 	 * after the time has run out, the object destroys itself
+     *
+     * @TODO use a prefab
 	 **/
 	public static void DrawLine(List<Vector3> vs , Color c, float time = 0.02f)
 	{
 		GameObject    obj         = new GameObject ();
 		LineRenderer rend         = obj.AddComponent<LineRenderer>();
 		Material     lineMaterial = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
-
 
         obj.name = "Path";
 		rend.SetWidth (0.02f, 0.02f);

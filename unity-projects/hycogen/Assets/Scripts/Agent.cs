@@ -7,7 +7,6 @@ public class Agent : MonoBehaviour {
 	public float speed = 10;
 
 	private Vector3  lastPosition;
-	private float    step 	  	  = 1;
 	private Renderer rend         = null;
 
 	private bool active = true;
@@ -21,12 +20,11 @@ public class Agent : MonoBehaviour {
 	}
 
 	/**
-	 * move forward per step 
+	 * move forward per step ^= speed * deltaTime
 	 */
 	void MoveForward()
 	{
-		step = speed * Time.deltaTime;
-		transform.position += transform.forward * step;
+        transform.position += transform.forward * speed * Time.deltaTime;
 	}
 		
 
