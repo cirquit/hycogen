@@ -43,19 +43,27 @@ public class Path
     {
         List<Vector3> absPath = new List<Vector3>();
 
-        Vector3 prev = start;
+        Vector3 lastPos = start;
 
         foreach (Vector2 curr in path)
         {
-            prev = new Vector3(prev.x + curr.x, prev.y, prev.z + curr.y);
-            absPath.Add(prev);
+            lastPos = new Vector3(lastPos.x + curr.x, lastPos.y, lastPos.z + curr.y);
+            absPath.Add(lastPos);
         }
-
-        absPath.Reverse();
 
         return absPath;
     }
 
+    /*
+     * creates a pathlist with absolute cordinates based on the current position
+     * the current position is the first element
+     **/
+    public List<Vector3> CreateAbsolutePathWithStart(Vector3 start)
+    {
+        List <Vector3> absPath = CreateAbsolutePath(start);
+        absPath.Insert(0, start);
+        return absPath;
+    }
 
     /*
      * creates #subpathCount paths in relative representation from (0,0)

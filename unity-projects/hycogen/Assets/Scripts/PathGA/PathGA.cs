@@ -79,40 +79,45 @@ public class PathGA
         this.pMutation     = new PathMutation(gamma, delta, maxDeviation);
     }
 
-
+    /*
+     * starts the genetic algorithm and returns the next best path in the given time
+     **/
     public Path SimulatePaths(Vector3 curPos, float time, bool drawpaths)
     {
 
         Path p = pFactory.GenPath();
-        Utils.DrawPath(p, curPos, Color.black, 0.05f);
+        Utils.DrawPath(p, curPos, Color.black, Time.deltaTime);
 
-        // Debug.Log("PathGA.cs: SimulatePaths: fitness - " + CollectFitness(curPos, p));
-        float x = CollectFitness(curPos, p);
+        p.fitness = CollectFitness(curPos, p);
+        Debug.Log("fitness: " + p.fitness.ToString());
         return p;
     }
 
-
+    /*
+     * simulates the path with a 0.5f diameter sphere and looks up every collision
+     * every collision has a fitness value which is accumulated and returned
+     **/
     public float CollectFitness(Vector3 curPos, Path p)
     {
         float         fitness = 0.0f;
         Vector3       lastPos = curPos;
-        List<Vector3> absPath = p.CreateAbsolutePath(curPos);
+        List<Vector3> absPath = p.CreateAbsolutePathWithStart(curPos);
 
         foreach (Vector3 target in absPath)
         {
-            //RaycastHit hit;
-            Ray        ray = new Ray(lastPos, target);
-            lastPos        = target;
+            Ray ray = new Ray(lastPos, target);
+            lastPos = target;
 
-            foreach(RaycastHit hit in Physics.SphereCastAll(ray, 0.00f, Vector3.Distance(lastPos, target)))
+            foreach(RaycastHit hit in Physics.SphereCastAll(ray, 0.5f, Vector3.Distance(lastPos, target)))
             {
                 switch (hit.collider.gameObject.tag)
                 {   
                     case "Wall":      fitness += wallCollision;      break;
                     case "River":     fitness += riverCollision;     break;
-                    case "Agent":     fitness += agentCollision;     break;
+                    case "Agent":/* fitness += agentCollision; */    break;
                     case "AgentPath": fitness += agentPathCollision; break;
                     case "Target":    fitness += targetCollision;    break;
+                    case "Plane":                                    break;
                     default:
                         Debug.Log("PathGA.cs: CollectFitness - collided with an unknown tag: " + hit.collider.tag);
                         break;

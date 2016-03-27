@@ -32,6 +32,7 @@ public class Utils {
         Color        col          = c ?? Color.black;
 
         obj.name = "Path";
+        obj.tag  = "AgentPath";
 		rend.SetWidth (0.04f, 0.04f);
 		rend.SetColors (col, col);
         rend.SetVertexCount(vs.Count);
@@ -44,7 +45,7 @@ public class Utils {
     public static void DrawPath(Path p, Vector3 curPos, Color? c = null, float time = 0.02f)
     {
         Color col = c ?? Color.black;
-        DrawLine(p.CreateAbsolutePath(curPos), col, time);
+        DrawLine(p.CreateAbsolutePathWithStart(curPos), col, time);
     }
 
     /*
