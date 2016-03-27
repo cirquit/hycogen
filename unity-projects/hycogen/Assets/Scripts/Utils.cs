@@ -24,17 +24,42 @@ public class Utils {
      *
      * @TODO use a prefab
 	 **/
-	public static void DrawLine(List<Vector3> vs , Color c, float time = 0.02f)
+    public static void DrawLine(List<Vector3> vs , Color? c = null, float time = 0.02f)
 	{
-		GameObject    obj         = new GameObject ();
+		GameObject   obj          = new GameObject ();
 		LineRenderer rend         = obj.AddComponent<LineRenderer>();
 		Material     lineMaterial = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
+        Color        col          = c ?? Color.black;
 
         obj.name = "Path";
-		rend.SetWidth (0.02f, 0.02f);
-		rend.SetColors (c, c);
+		rend.SetWidth (0.04f, 0.04f);
+		rend.SetColors (col, col);
+        rend.SetVertexCount(vs.Count);
 		rend.SetPositions(vs.ToArray());
 		rend.material = lineMaterial;
 		UnityEngine.Object.Destroy (obj, time);
 	}
+
+
+    public static void DrawPath(Path p, Vector3 curPos, Color? c = null, float time = 0.02f)
+    {
+        Color col = c ?? Color.black;
+        DrawLine(p.CreateAbsolutePath(curPos), col, time);
+    }
+
+    /*
+     * Fisher-Yates Shuffle (stable)
+     **/
+    public static void Shuffle<T>(T[] arr)
+    {
+        int length = arr.Length;
+
+        for (int i = 0; i < length; i++)
+        {
+           int j = Mathf.FloorToInt(Random.Range(0.0f, 1.0f) * (length - i));
+           T k = arr[j];
+           arr[j] = arr[i];
+           arr[i] = k;
+        }
+    }
 }

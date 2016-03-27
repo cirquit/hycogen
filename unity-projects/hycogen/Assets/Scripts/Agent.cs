@@ -4,30 +4,41 @@ using System.Collections.Generic;
 
 public class Agent : MonoBehaviour {
 
-	public float speed = 10;
 
-	private Vector3  lastPosition;
-	private Renderer rend         = null;
 
-	private bool active = true;
-	private bool once = true;
+//	private Vector3  lastPosition;
+//	private bool active = true;
+//	private bool once   = true;
 
-	void OnCollisionEnter(Collision col)
+
+    public float speed;
+    public PathGA pathGA = null;
+
+    private void FixedUpdate()
+    {
+        pathGA.SimulatePaths(transform.position, 1.0f, true);
+    }
+
+
+}
+
+/*	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.tag == "River") {
 			active = false;
 		}
-	}
+	} */
 
 	/**
 	 * move forward per step ^= speed * deltaTime
 	 */
+/*
 	void MoveForward()
 	{
         transform.position += transform.forward * speed * Time.deltaTime;
 	}
-		
-
+*/		
+/*
 	bool StillMoving()
 	{
 		if (!Utils.IsInBounds(transform.position.x, lastPosition.x)) {
@@ -45,7 +56,6 @@ public class Agent : MonoBehaviour {
 
 	void Start()
 	{
-		rend = GetComponent<Renderer>();
 		lastPosition = transform.position;
 	}
 
@@ -63,13 +73,13 @@ public class Agent : MonoBehaviour {
 			
 			Utils.DrawLine (l, Color.black);
 		}
-
-		if (!StillMoving () && once) {
+*/
+/*		if (!StillMoving () && once) {
 			Vector3 pos = new Vector3 (4.0f, 1.5f, 0.0f);
 			Quaternion rot = Quaternion.identity;
-			GameObject agent = (GameObject)Instantiate (Resources.Load ("AgentPrefab"), pos, rot);
+			Instantiate (Resources.Load ("AgentPrefab"), pos, rot);
 			once = false;
 		}
-
-	}
-}
+*/
+//	}
+//}
