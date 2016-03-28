@@ -5,6 +5,13 @@ using System.Linq;
 
 public class Path
 {
+
+    // testing puposes
+    // @TODO remove (remove in PathSimulator too)
+    public int rivercount = 0;
+    public int targetcount = 0;
+    public int wallcount   = 0;
+
     // fitness will be evaluated in the simulation
     public float fitness = 0;
 
@@ -130,7 +137,7 @@ public class Path
     /*
      * drops the first step, adds a new one at the end and resets the fitness
      **/
-    public void BuildNextStep()
+    public Path BuildNextStep()
     {
         if (path.Count == 0)
         {
@@ -138,10 +145,56 @@ public class Path
         }
         else
         {
-            path.RemoveAt(0);
-            path.Add(Path.CreateSemiRandomPoint(subpathLength));
+            //path.RemoveAt(0);
+            //path.Add(Path.CreateSemiRandomPoint(subpathLength));
             fitness = 0;
+            rivercount = 0;
+            wallcount = 0;
+            targetcount = 0;
         }
+
+        return this;
+    }
+
+    /*
+     * Full representation of the path
+     **/
+
+    public string ToString()
+    {
+        string result = "";
+
+        foreach (Vector2 v in path)
+        {
+            result += "(" + v.x.ToString("F1") + ", " + v.y.ToString("F1") + ")";
+        }
+
+        result += "| GLd: " + generationsLived.ToString() + " | F: " + fitness.ToString();
+
+        return result;
+    }
+
+    /*
+     * shortened representation of the path for the GUI
+     **/
+
+    public string ToViewString()
+    {
+        return this.GetCustomHash(5) + "| GLd: " + generationsLived.ToString() + " | F: " + fitness.ToString()
+            + "| RC: " + rivercount + " | TC: " + targetcount + " | WC: " + wallcount;
+    }
+
+    /*
+     * simple hash function to see distinctive paths
+     **/
+    public string GetCustomHash(int length)
+    {
+        string res = "";
+        foreach (char c in this.ToString().GetHashCode().ToString().Take(length).ToArray())
+        {
+            res += c;
+        }
+        return res;
     }
 
 }

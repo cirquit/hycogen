@@ -57,7 +57,10 @@ public class PathCrossover
             children[i] = Crossover(parents[i], parents[i + 1]);
         }
 
-        children[childrenSize - 1] = Crossover(parents[0], parents[childrenSize - 1]);
+        if (childrenSize != 0)
+        {
+            children[childrenSize - 1] = Crossover(parents[0], parents[childrenSize - 1]);
+        }
 
         return children;
     }

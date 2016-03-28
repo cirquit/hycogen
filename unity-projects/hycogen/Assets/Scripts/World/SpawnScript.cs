@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SpawnScript : MonoBehaviour {
 
+    private PathGA pathGA = null;
+
 	void Start ()
     {
 		Vector3    pos = new Vector3 (3.0f, 1.5f, 0.0f);
@@ -12,24 +14,44 @@ public class SpawnScript : MonoBehaviour {
 
         Agent agentScript  = (Agent) agent.GetComponent<Agent>();
 
-        agentScript.speed  = 1.0f;
-        agentScript.pathGA = new PathGA(
+        pathGA = new PathGA(
                 -1   // wallCollision
-              , -10  // riverCollision
+              , -300 // riverCollision
               , -2   // agentCollision
               , 100  // targetCollision
               , -1   // agentPathCollision
               , 10   // popSize
-              , 3    // subPathCount
-              , 2.0f // subPathLength
-              , 5    // generationCount
-              , 0.2f // alpha (NS - how many should be new)
-              , 0.3f // beta  (NS - how many new children)
+              , 4    // subPathCount
+              , 3.0f // subPathLength
+              , 20   // generationCount
+              , 0.3f // alpha (NS - how many should be new)
+              , 0.0f // beta  (NS - how many new children)     // @TODO if this is 0.0 => index out of bounds
               , 1    // mode  (CO)
               , 0.5f // gamma (MU - how many should be mutated)
               , 0.5f // delta (MU - how much should be mutated in the individual)
               , 0.5f // maxDeviation (MU)
              );
+
+        agentScript.speed  = 1.0f;
+        agentScript.pathGA = pathGA;
 	}
+
+    private void OnGUI()
+    {
+        int height = 20;
+        int width  = 250;
+        int lines  = Mathf.Min(20, pathGA.popSize);
+
+        if (pathGA.population != null)
+        {
+            GUI.Box(new Rect(0, 0, width, height * (lines + 1)), "Path fitness");
+
+            for (int i = 0; i < lines; i++)
+            {
+                string line = pathGA.population[i].ToViewString();
+                GUI.TextField(new Rect(0, (i+1) * height, width, height), line);
+            }
+        }
+    }
 }
 

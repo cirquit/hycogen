@@ -36,10 +36,22 @@ public class PathSimulator
             {
                 switch (hit.collider.gameObject.tag)
                 {   
-                    case "Wall":          fitness += wallCollision;      break;
-                    case "RiverTrigger":  fitness += riverCollision;     break;
+                    case "Wall":          
+                        fitness += wallCollision;
+                        p.wallcount += 1;
+                        break;
+                    case "RiverTrigger":
+                        fitness += riverCollision;
+                        p.rivercount += 1;
+                        break;
                     case "AgentPath":     fitness += agentPathCollision; break;
-                    case "TargetTrigger": fitness += targetCollision;    break;
+                    case "TargetTrigger":
+                        fitness += targetCollision;
+                        if (p.targetcount < 1)
+                        {
+                            p.targetcount += 1; 
+                        }
+                        break;
 
                         // Tags which are only for the Agent to collide with, e.g these can't be percepted via "sensors"
                     case "Agent":                                         break;
@@ -64,12 +76,7 @@ public class PathSimulator
         for (int i = 0; i < ps.Length; i++)
         {
             ps[i].fitness = CollectFitness(curPos, ps[i]);
-
-            //Debug.Log("Is this even called?");
-            //if (draw)
-            //{
-            // Utils.DrawPath(ps[i], curPos, Color.black, 0.05f);
-            //}
+            ps[i].generationsLived += 1;
         }
     }
 }

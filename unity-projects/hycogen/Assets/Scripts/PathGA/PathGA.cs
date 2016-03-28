@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PathGA 
 {
@@ -14,7 +15,7 @@ public class PathGA
 
     /** GENERATION **/
 
-    private int   popSize;
+    public  int   popSize;
     private int   subPathCount;
     private float subPathLength;
     private int   generationCount;
@@ -51,7 +52,7 @@ public class PathGA
     private PathNaturalSelection pNatSelection = null;
     private PathCrossover        pCrossover    = null;
     private PathMutation         pMutation     = null;
-    private Path[]               population    = null;
+    public  Path[]               population    = null;
 
     public PathGA(int   wallCollision,   int   riverCollision,     int   agentCollision
                 , int   targetCollision, int   agentPathCollision, int   popSize
@@ -88,7 +89,15 @@ public class PathGA
      **/
     public Path SimulatePaths(Vector3 curPos, bool drawPaths)
     {
-        population = pFactory.GenPaths();
+        if (population == null)
+        {
+            population = pFactory.GenPaths();
+        }
+        else
+        { 
+            population.Select(p => p.BuildNextStep());
+        }
+
 
         for (int i = 0; i < generationCount - 1; i++)
         {
@@ -108,5 +117,19 @@ public class PathGA
         {
             return population[0];
         }
+    }
+
+
+    /*
+     * draws a random path for testing purposes
+     * @TODO remove
+     **/
+    public Path RandomPath(Vector3 curPos)
+    {
+        Path p = pFactory.GenPath();
+        pSimulator.CollectFitness(curPos, p);
+        Utils.DrawPath(p, curPos, 0.10f);
+
+        return p;
     }
 }

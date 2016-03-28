@@ -25,12 +25,12 @@ public class PathNaturalSelection
 
         if (alpha < 0.0f || alpha > 1.0f)
         {
-            Debug.Log("PathNaturalSelection.cs: Constructor - alpha has to be between 0.0 and 1.0, it's: " + alpha.ToString());
+            Debug.Log("PathNaturalSelection.cs: Constructor - alpha has to be between 0.0 and 1.0, but it's: " + alpha.ToString());
         }
 
         if (beta < 0.0f || beta > 1.0f)
         {
-            Debug.Log("PathNaturalSelection.cs: Constructor - beta has to be between 0.0 and 1.0, it's: " + beta.ToString());
+            Debug.Log("PathNaturalSelection.cs: Constructor - beta has to be between 0.0 and 1.0, but it's: " + beta.ToString());
         }
     }
 
@@ -49,7 +49,7 @@ public class PathNaturalSelection
         //Debug.Log("PathNS.cs: Apply - α = " + alpha.ToString() + " | newIndividuals = " + newIndividuals.ToString());
         //Debug.Log("PathNS.cs: Apply - β = " + beta.ToString()  + " | futureChildren = " + futureChildren.ToString());
 
-        paths.OrderBy(path => path.fitness).ToArray();
+        paths = paths.OrderByDescending(path => path.fitness).ToArray();
 
         Path[] selected = new Path[best];
 
@@ -81,7 +81,7 @@ public class PathNaturalSelection
      //   Debug.Log("PathNS.cs: Repopulate - parentsCount: " + parentsCount.ToString());
      //   Debug.Log("PathNS.cs: Repopulate - childrenCount: " + childrenCount.ToString());
 
-        parents.OrderBy(path => path.fitness).ToArray();
+        parents = parents.OrderByDescending(path => path.fitness).ToArray();
 
         for (int i = 0; i < pFactory.popSize; i++)
         {
