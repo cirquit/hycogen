@@ -24,7 +24,7 @@ public class Utils {
      *
      * @TODO use a prefab
 	 **/
-    public static void DrawLine(List<Vector3> vs , Color? c = null, float time = 0.02f)
+    public static void DrawLine(List<Vector3> vs, float time = 0.02f, Color? c = null)
 	{
 		GameObject   obj          = new GameObject ();
 		LineRenderer rend         = obj.AddComponent<LineRenderer>();
@@ -42,11 +42,13 @@ public class Utils {
 	}
 
 
-    public static void DrawPath(Path p, Vector3 curPos, Color? c = null, float time = 0.02f)
+    public static void DrawPath(Path p, Vector3 curPos, float time = 0.02f, Color? c = null)
     {
         Color col = c ?? Color.black;
-        DrawLine(p.CreateAbsolutePathWithStart(curPos), col, time);
+        DrawLine(p.CreateAbsolutePathWithStart(curPos), time, col);
     }
+
+
 
     /*
      * Fisher-Yates Shuffle (stable)

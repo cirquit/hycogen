@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Agent : MonoBehaviour {
 
@@ -14,10 +15,50 @@ public class Agent : MonoBehaviour {
     public float speed;
     public PathGA pathGA = null;
 
+    private Vector3 target;
+    private GameObject go;
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Wall")
+            target = transform.position;
+
+        if (col.gameObject.tag == "River")
+            Debug.Log("hit a river...");
+    }
+
+
+    private void MoveForward()
+    {
+        transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
     private void FixedUpdate()
     {
-        pathGA.SimulatePaths(transform.position, 1.0f, true);
+
+      //  Path p = pathGA.SimulatePaths(transform.position, true);
+        if (Vector3.Distance(transform.position,target) >= 0.01) 
+        {
+            transform.LookAt(target);
+            MoveForward();
+        }
+        else
+        {
+            //GameObject go = GameObject.FindGameObjectWithTag ("Target");
+            //target = go.transform.position; //transform.LookAt (target.transform);
+            Path p = pathGA.SimulatePaths(transform.position, true);
+            target = p.CreateAbsolutePath(transform.position).First();
+            Utils.DrawPath(p, transform.position, 1.0f);
+
+            Debug.Log("[Agent]: fitness - " + p.fitness.ToString());
+        }
     }
+
+    private void Start()
+    {
+        target = transform.position;
+    }
+
 
 
 }
@@ -32,12 +73,8 @@ public class Agent : MonoBehaviour {
 	/**
 	 * move forward per step ^= speed * deltaTime
 	 */
-/*
-	void MoveForward()
-	{
-        transform.position += transform.forward * speed * Time.deltaTime;
-	}
-*/		
+
+	
 /*
 	bool StillMoving()
 	{

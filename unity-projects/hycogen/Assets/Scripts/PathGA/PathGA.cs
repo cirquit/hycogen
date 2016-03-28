@@ -16,7 +16,8 @@ public class PathGA
 
     private int   popSize;
     private int   subPathCount;
-    private int   subPathLength;
+    private float subPathLength;
+    private int   generationCount;
 
     /** CROSSOVER **/
 
@@ -46,16 +47,17 @@ public class PathGA
     /** GENETIC ALGORITHM **/
 
     private PathFactory          pFactory      = null;
+    private PathSimulator        pSimulator    = null;
     private PathNaturalSelection pNatSelection = null;
     private PathCrossover        pCrossover    = null;
     private PathMutation         pMutation     = null;
-
+    private Path[]               population    = null;
 
     public PathGA(int   wallCollision,   int   riverCollision,     int   agentCollision
                 , int   targetCollision, int   agentPathCollision, int   popSize
-                , int   subPathCount,    int   subPathLength,      float alpha
-                , float beta,            int   mode,               float gamma
-                , float delta,           float maxDeviation)
+                , int   subPathCount,    float subPathLength,      int   generationCount
+                , float alpha,           float beta,               int   mode          
+                , float gamma,           float delta,              float maxDeviation)
     {
 
         this.wallCollision      = wallCollision;
@@ -63,6 +65,7 @@ public class PathGA
         this.agentCollision     = agentCollision;
         this.agentPathCollision = agentPathCollision;
         this.targetCollision    = targetCollision;
+        this.generationCount    = generationCount;
 
         this.popSize       = popSize;
         this.subPathCount  = subPathCount;
@@ -74,58 +77,36 @@ public class PathGA
         this.maxDeviation  = maxDeviation;
 
         this.pFactory      = new PathFactory(popSize, subPathCount, subPathLength);
+        this.pSimulator    = new PathSimulator(wallCollision, riverCollision, agentPathCollision, targetCollision);
         this.pNatSelection = new PathNaturalSelection(alpha, beta, this.pFactory); 
         this.pCrossover    = new PathCrossover(beta, mode, this.pFactory);
         this.pMutation     = new PathMutation(gamma, delta, maxDeviation);
     }
 
     /*
-     * starts the genetic algorithm and returns the next best path in the given time
+     * starts the genetic algorithm and returns the next best path after #generationCount generations
      **/
-    public Path SimulatePaths(Vector3 curPos, float time, bool drawpaths)
+    public Path SimulatePaths(Vector3 curPos, bool drawPaths)
     {
+        population = pFactory.GenPaths();
 
-        Path p = pFactory.GenPath();
-        Utils.DrawPath(p, curPos, Color.black, Time.deltaTime);
-
-        p.fitness = CollectFitness(curPos, p);
-        Debug.Log("fitness: " + p.fitness.ToString());
-        return p;
-    }
-
-    /*
-     * simulates the path with a 0.5f diameter sphere and looks up every collision
-     * every collision has a fitness value which is accumulated and returned
-     **/
-    public float CollectFitness(Vector3 curPos, Path p)
-    {
-        float         fitness = 0.0f;
-        Vector3       lastPos = curPos;
-        List<Vector3> absPath = p.CreateAbsolutePathWithStart(curPos);
-
-        foreach (Vector3 target in absPath)
+        for (int i = 0; i < generationCount - 1; i++)
         {
-            Ray ray = new Ray(lastPos, target);
-            lastPos = target;
-
-            foreach(RaycastHit hit in Physics.SphereCastAll(ray, 0.5f, Vector3.Distance(lastPos, target)))
-            {
-                switch (hit.collider.gameObject.tag)
-                {   
-                    case "Wall":      fitness += wallCollision;      break;
-                    case "River":     fitness += riverCollision;     break;
-                    case "Agent":/* fitness += agentCollision; */    break;
-                    case "AgentPath": fitness += agentPathCollision; break;
-                    case "Target":    fitness += targetCollision;    break;
-                    case "Plane":                                    break;
-                    default:
-                        Debug.Log("PathGA.cs: CollectFitness - collided with an unknown tag: " + hit.collider.tag);
-                        break;
-                }
-            }
+            pSimulator.SimulatePaths(curPos, population, drawPaths);
+            Path[] children   = pCrossover.Apply(population);
+            Path[] mutated    = pMutation.Apply(children);
+            Path[] selected   = pNatSelection.Apply(population);
+            population        = pNatSelection.Repopulate(selected, mutated);
         }
 
-        return fitness;
+        if (population.Length == 0)
+        {
+            Debug.Log("PathGA.cs: SimulatePaths - population is zero, this should never happen");
+            return pFactory.GenPath();
+        }
+        else
+        {
+            return population[0];
+        }
     }
-
 }

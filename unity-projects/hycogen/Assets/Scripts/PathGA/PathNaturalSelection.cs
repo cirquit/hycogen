@@ -45,9 +45,9 @@ public class PathNaturalSelection
         int futureChildren = Mathf.FloorToInt(beta  * popSize);
         int best = popSize - futureChildren - newIndividuals;
 
-        Debug.Log("PathNS.cs: Apply - Popsize from PathFactory - " + popSize.ToString() + " | paths.Count - " + paths.Count().ToString());
-        Debug.Log("PathNS.cs: Apply - α = " + alpha.ToString() + " | newIndividuals = " + newIndividuals.ToString());
-        Debug.Log("PathNS.cs: Apply - β = " + beta.ToString()  + " | futureChildren = " + futureChildren.ToString());
+        //Debug.Log("PathNS.cs: Apply - Popsize from PathFactory - " + popSize.ToString() + " | paths.Count - " + paths.Count().ToString());
+        //Debug.Log("PathNS.cs: Apply - α = " + alpha.ToString() + " | newIndividuals = " + newIndividuals.ToString());
+        //Debug.Log("PathNS.cs: Apply - β = " + beta.ToString()  + " | futureChildren = " + futureChildren.ToString());
 
         paths.OrderBy(path => path.fitness).ToArray();
 
@@ -77,9 +77,9 @@ public class PathNaturalSelection
         int parentsCount  = parents.Count();
         int childrenCount = children.Count();
 
-        Debug.Log("PathNS.cs: Repopulate - PathFactory.popSize: " + pFactory.popSize.ToString());
-        Debug.Log("PathNS.cs: Repopulate - parentsCount: " + parentsCount.ToString());
-        Debug.Log("PathNS.cs: Repopulate - childrenCount: " + childrenCount.ToString());
+     //   Debug.Log("PathNS.cs: Repopulate - PathFactory.popSize: " + pFactory.popSize.ToString());
+     //   Debug.Log("PathNS.cs: Repopulate - parentsCount: " + parentsCount.ToString());
+     //   Debug.Log("PathNS.cs: Repopulate - childrenCount: " + childrenCount.ToString());
 
         parents.OrderBy(path => path.fitness).ToArray();
 

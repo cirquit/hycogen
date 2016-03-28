@@ -35,6 +35,21 @@ public class Path
         this.subpathLength = subpathLength;
     }
 
+    /*
+     * creates a semi random point with a random ° based on the unit circle
+     * its length is in the range of [0, subpathLength]
+     * 
+     **/
+    public static Vector2 CreateSemiRandomPoint(float subpathLength)
+    {
+        float phi = Random.Range(0, 2 * 3.1415926f);
+        float x = Mathf.Cos(phi);
+        float z = Mathf.Sin(phi);
+
+        float length = Random.Range(0.0f, subpathLength);
+
+        return new Vector2(x * length, z * length);
+    }
 
     /*
      * creates a pathlist with absolute coordiantes based on the current position
@@ -68,8 +83,7 @@ public class Path
     /*
      * creates #subpathCount paths in relative representation from (0,0)
      * the calculation is based on the unit circle
-     * Sin/Cos use the linear measure so the angles (-180°, 180°) are mapped to (0, 2 * pi)
-     * after we get a path with the length 1, we multiply it by Random.Range(0, subpathLength)
+     * the real length of the subpaths are [0,subpathLength]
      **/
 
     public static List<Vector2> CreatePath(int subpathCount, float subpathLength)
@@ -78,13 +92,7 @@ public class Path
 
         for(int i = 0; i < subpathCount; i++)
         {
-            float phi = Random.Range(0, 2 * 3.1415926f);
-            float x = Mathf.Cos(phi);
-            float z = Mathf.Sin(phi);
-
-            float length = Random.Range(0.0f, subpathLength);
-
-            path.Add(new Vector2(x * length, z * length));
+            path.Add(Path.CreateSemiRandomPoint(subpathLength));
         }
 
         return path;
@@ -117,6 +125,23 @@ public class Path
         }
 
         return maxDifference;
+    }
+
+    /*
+     * drops the first step, adds a new one at the end and resets the fitness
+     **/
+    public void BuildNextStep()
+    {
+        if (path.Count == 0)
+        {
+            Debug.Log("Path.cs: BuildNextStep - path has the length 0, this should never happen");
+        }
+        else
+        {
+            path.RemoveAt(0);
+            path.Add(Path.CreateSemiRandomPoint(subpathLength));
+            fitness = 0;
+        }
     }
 
 }
