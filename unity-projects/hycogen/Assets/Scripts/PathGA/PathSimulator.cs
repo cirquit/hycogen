@@ -8,18 +8,22 @@ public class PathSimulator
     private float riverCollision;
     private float agentPathCollision;
     private float targetCollision;
+    //private float agentCollision;
 
-    public PathSimulator(float wallCollision, float riverCollision, float agentPathCollision, float targetCollision)
+    public PathSimulator(float wallCollision, float riverCollision, float agentPathCollision, float targetCollision, float agentCollision)
     {
         this.wallCollision      = wallCollision;
         this.riverCollision     = riverCollision;
         this.agentPathCollision = agentPathCollision;
         this.targetCollision    = targetCollision;
+        //this.agentCollision = agentCollision;
     }
 
     /*
      * simulates the path with a 0.5f diameter sphere and looks up every collision
      * every collision has a fitness value which is accumulated and returned
+     * 
+     * alters the path collision counters based on the collision
      **/
     public float CollectFitness(Vector3 curPos, Path p)
     {
@@ -32,23 +36,41 @@ public class PathSimulator
             Ray ray = new Ray(lastPos, target);
             lastPos = target;
 
-            foreach(RaycastHit hit in Physics.SphereCastAll(ray, 0.5f, Vector3.Distance(lastPos, target)))
+            foreach(RaycastHit hit in Physics.SphereCastAll(ray, 1.0f, Vector3.Distance(lastPos, target)))
             {
                 switch (hit.collider.gameObject.tag)
                 {   
                     case "Wall":          
-                        fitness += wallCollision;
-                        p.wallcount += 1;
+                     //   if (p.wallcount < 1)
+                       // {
+                            //Debug.Log("got a ray-hit with a wall, wallcollision is = " + wallCollision);
+                            //Debug.Log("fitness bevor: " + fitness);
+                            fitness += wallCollision;
+                            //Debug.Log("fitness after: " + fitness);
+                            p.wallcount += 1;
+
+//                        }
                         break;
                     case "RiverTrigger":
-                        fitness += riverCollision;
-                        p.rivercount += 1;
+  //                      if (p.rivercount < 1)
+  //                      {
+                            //Debug.Log("got a ray-hit with a river , rivercollision is = " + riverCollision);
+                            //Debug.Log("fitness bevor: " + fitness);
+                            fitness += riverCollision;
+                            //Debug.Log("fitness after: " + fitness);
+                            p.rivercount += 1;
+
+
+    //                    }
                         break;
                     case "AgentPath":     fitness += agentPathCollision; break;
+
+                        // we only allow to get the reward once for the targetcollision
                     case "TargetTrigger":
-                        fitness += targetCollision;
+
                         if (p.targetcount < 1)
                         {
+                            fitness += targetCollision;
                             p.targetcount += 1; 
                         }
                         break;
@@ -63,7 +85,7 @@ public class PathSimulator
                 }
             }
         }
-
+        //Debug.Log("returning fitness" + fitness);
         return fitness;
     }
 

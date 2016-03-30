@@ -137,7 +137,7 @@ public class Path
     /*
      * drops the first step, adds a new one at the end and resets the fitness
      **/
-    public Path BuildNextStep()
+    public void BuildNextStep()
     {
         if (path.Count == 0)
         {
@@ -145,22 +145,20 @@ public class Path
         }
         else
         {
-            //path.RemoveAt(0);
-            //path.Add(Path.CreateSemiRandomPoint(subpathLength));
-            fitness = 0;
-            rivercount = 0;
-            wallcount = 0;
+            path.RemoveAt(0);
+            path.Add(Path.CreateSemiRandomPoint(subpathLength));
+            fitness     = 0;
+            rivercount  = 0;
+            wallcount   = 0;
             targetcount = 0;
         }
-
-        return this;
     }
 
     /*
      * Full representation of the path
      **/
 
-    public string ToString()
+    override public string ToString()
     {
         string result = "";
 

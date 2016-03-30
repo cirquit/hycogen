@@ -36,7 +36,7 @@ public class Utils {
 		rend.SetWidth (0.04f, 0.04f);
 		rend.SetColors (col, col);
         rend.SetVertexCount(vs.Count);
-		rend.SetPositions(vs.ToArray());
+        rend.SetPositions(vs.ToArray());
 		rend.material = lineMaterial;
 		UnityEngine.Object.Destroy (obj, time);
 	}

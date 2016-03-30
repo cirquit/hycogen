@@ -76,12 +76,13 @@ public class PathGA
         this.gamma         = gamma;
         this.delta         = delta;
         this.maxDeviation  = maxDeviation;
+        this.mode          = mode;
 
-        this.pFactory      = new PathFactory(popSize, subPathCount, subPathLength);
-        this.pSimulator    = new PathSimulator(wallCollision, riverCollision, agentPathCollision, targetCollision);
-        this.pNatSelection = new PathNaturalSelection(alpha, beta, this.pFactory); 
-        this.pCrossover    = new PathCrossover(beta, mode, this.pFactory);
-        this.pMutation     = new PathMutation(gamma, delta, maxDeviation);
+        this.pFactory      = new PathFactory(this.popSize, this.subPathCount, this.subPathLength);
+        this.pSimulator    = new PathSimulator(this.wallCollision, this.riverCollision, this.agentPathCollision, this.targetCollision, this.agentCollision);
+        this.pNatSelection = new PathNaturalSelection(this.alpha, this.beta, this.pFactory); 
+        this.pCrossover    = new PathCrossover(this.beta, this.mode, this.pFactory);
+        this.pMutation     = new PathMutation(this.gamma, this.delta, this.maxDeviation);
     }
 
     /*
@@ -95,7 +96,10 @@ public class PathGA
         }
         else
         { 
-            population.Select(p => p.BuildNextStep());
+            for (int i = 0; i < popSize; i++)
+            {
+                population[i].BuildNextStep();
+            }
         }
 
 

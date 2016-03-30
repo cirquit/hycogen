@@ -43,7 +43,7 @@ public class PathCrossover
     {
         if (parents.Length < 2)
         {
-            Debug.Log("PathCO.cs: Apply - parents.Count doesn't allow crossover, count = " + parents.Length.ToString());
+            //Debug.Log("PathCO.cs: Apply - parents.Count doesn't allow crossover, count = " + parents.Length.ToString());
             return parents;
         }
 
