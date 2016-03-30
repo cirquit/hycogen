@@ -20,7 +20,7 @@ public class PathSimulator
     }
 
     /*
-     * simulates the path with a 0.5f diameter sphere and looks up every collision
+     * simulates the path with a 1.0f diameter sphere and looks up every collision
      * every collision has a fitness value which is accumulated and returned
      * 
      * alters the path collision counters based on the collision
@@ -40,34 +40,19 @@ public class PathSimulator
             {
                 switch (hit.collider.gameObject.tag)
                 {   
-                    case "Wall":          
-                     //   if (p.wallcount < 1)
-                       // {
-                            //Debug.Log("got a ray-hit with a wall, wallcollision is = " + wallCollision);
-                            //Debug.Log("fitness bevor: " + fitness);
+                    case "Wall":
                             fitness += wallCollision;
-                            //Debug.Log("fitness after: " + fitness);
                             p.wallcount += 1;
-
-//                        }
                         break;
                     case "RiverTrigger":
-  //                      if (p.rivercount < 1)
-  //                      {
-                            //Debug.Log("got a ray-hit with a river , rivercollision is = " + riverCollision);
-                            //Debug.Log("fitness bevor: " + fitness);
                             fitness += riverCollision;
-                            //Debug.Log("fitness after: " + fitness);
                             p.rivercount += 1;
-
-
-    //                    }
                         break;
-                    case "AgentPath":     fitness += agentPathCollision; break;
-
+                    case "AgentPath":
+                            fitness += agentPathCollision;
+                        break;
                         // we only allow to get the reward once for the targetcollision
                     case "TargetTrigger":
-
                         if (p.targetcount < 1)
                         {
                             fitness += targetCollision;
@@ -85,7 +70,6 @@ public class PathSimulator
                 }
             }
         }
-        //Debug.Log("returning fitness" + fitness);
         return fitness;
     }
 

@@ -136,4 +136,13 @@ public class PathGA
 
         return p;
     }
+
+    override public string ToString()
+    {
+        return "WC:"   + this.wallCollision      + ", RC:"    + this.riverCollision  + ", AC:"     + this.agentCollision
+          + ", APC:"   + this.agentPathCollision + ", TC:"    + this.targetCollision + ", PopS:"   + this.popSize 
+          + ", subPC:" + this.subPathCount       + ", subPL:" + this.subPathLength   + ", GENC:"   + this.generationCount
+          + ", α:"     + this.alpha              + ", β: "    + this.beta            + ", COm:"    + this.mode
+          + ", γ: "    + this.gamma              + ", δ:"     + this.delta           + ", maxDev:" + this.maxDeviation;
+    }
 }

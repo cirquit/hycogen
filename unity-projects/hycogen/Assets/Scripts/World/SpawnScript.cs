@@ -3,15 +3,19 @@ using System.Collections;
 
 public class SpawnScript : MonoBehaviour {
 
-    private PathGA pathGA = null;
+   // private PathGA pathGA = null;
 
 	void Start ()
     {
-		Vector3    pos = new Vector3 (2.0f, 1.5f, 0.0f);
+
+    }
+
+
+		/*Vector3    pos = new Vector3 (2.0f, 1.5f, 0.0f);
 		Quaternion rot = new Quaternion ();
 
         GameObject agent  = (GameObject) Instantiate(Resources.Load("AgentPrefab"), pos, rot);   
-
+        agent.
         Agent agentScript = (Agent) agent.GetComponent<Agent>();
 
         pathGA = new PathGA(
@@ -20,7 +24,7 @@ public class SpawnScript : MonoBehaviour {
               , -2   // agentCollision
               , 100  // targetCollision
               , -1   // agentPathCollision
-              , 10    // popSize
+              , 10   // popSize
               , 4    // subPathCount
               , 3.0f // subPathLength
               , 2    // generationCount
@@ -33,9 +37,9 @@ public class SpawnScript : MonoBehaviour {
              );
 
         agentScript.speed  = 1.0f;
-        agentScript.pathGA = pathGA;
-	}
-
+        agentScript.pathGA = pathGA; 
+	} */
+    /*
     private void OnGUI()
     {
         int height = 20;
@@ -52,6 +56,6 @@ public class SpawnScript : MonoBehaviour {
                 GUI.TextField(new Rect(0, (i+1) * height, width, height), line);
             }
         }
-    }
+    }*/
 }
 
