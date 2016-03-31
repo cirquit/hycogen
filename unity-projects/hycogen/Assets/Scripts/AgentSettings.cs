@@ -10,6 +10,8 @@ public class AgentSettings
     public PathGA pathGA = null;
     public float  speed  = 0;
 
+    public static int settingsCount = 17;
+
     public AgentSettings(PathGA pathGA, float speed)
     {
         this.pathGA = pathGA;

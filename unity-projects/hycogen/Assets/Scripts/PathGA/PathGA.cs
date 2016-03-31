@@ -6,43 +6,43 @@ using System.Linq;
 public class PathGA 
 {
     /** FITNESS VARIABLES **/
-    private int   wallCollision;
-    private int   riverCollision;
-    private int   agentCollision;
-    private int   agentPathCollision;
-    private int   targetCollision;
+    public int   wallCollision;
+    public int   riverCollision;
+    public int   agentCollision;
+    public int   agentPathCollision;
+    public int   targetCollision;
 
 
     /** GENERATION **/
 
-    public  int   popSize;
-    private int   subPathCount;
-    private float subPathLength;
-    private int   generationCount;
+    public int   popSize;
+    public int   subPathCount;
+    public float subPathLength;
+    public int   generationCount;
 
     /** CROSSOVER **/
 
     // how many new individuals should be created in %
-    private float alpha;
+    public float alpha;
 
     // how many children are created via crossover in %
-    private float beta;
+    public float beta;
 
     // defines the type of crossover we are using (no higher order functions available)
     // * 1 <-> OnePointCrossover
     // * 2 <-> TwoPointCrossover
-    private int   mode;
+    public int   mode;
 
     /** MUTATION **/
 
     // how many individuals are selected for mutation in %
-    private float gamma;
+    public float gamma;
 
     // how much of every individual should be mutated in %
-    private float delta;
+    public float delta;
 
     // how much is the maximum deviation for the coordinates
-    private float maxDeviation;
+    public float maxDeviation;
 
 
     /** GENETIC ALGORITHM **/
@@ -60,7 +60,6 @@ public class PathGA
                 , float alpha,           float beta,               int   mode          
                 , float gamma,           float delta,              float maxDeviation)
     {
-
         this.wallCollision      = wallCollision;
         this.riverCollision     = riverCollision;
         this.agentCollision     = agentCollision;
@@ -78,6 +77,18 @@ public class PathGA
         this.maxDeviation  = maxDeviation;
         this.mode          = mode;
 
+        this.pFactory      = new PathFactory(this.popSize, this.subPathCount, this.subPathLength);
+        this.pSimulator    = new PathSimulator(this.wallCollision, this.riverCollision, this.agentPathCollision, this.targetCollision, this.agentCollision);
+        this.pNatSelection = new PathNaturalSelection(this.alpha, this.beta, this.pFactory); 
+        this.pCrossover    = new PathCrossover(this.beta, this.mode, this.pFactory);
+        this.pMutation     = new PathMutation(this.gamma, this.delta, this.maxDeviation);
+    }
+
+    /*
+     * This will be called from CollaborationMutation after mutating the parameters
+     **/
+    public void ReinitalizeGA()
+    {
         this.pFactory      = new PathFactory(this.popSize, this.subPathCount, this.subPathLength);
         this.pSimulator    = new PathSimulator(this.wallCollision, this.riverCollision, this.agentPathCollision, this.targetCollision, this.agentCollision);
         this.pNatSelection = new PathNaturalSelection(this.alpha, this.beta, this.pFactory); 

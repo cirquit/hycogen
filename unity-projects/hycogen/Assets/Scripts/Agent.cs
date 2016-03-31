@@ -29,8 +29,8 @@ public class Agent : MonoBehaviour
     private void FixedUpdate()
     {
 
-        bool atTarget  = Vector3.Distance(transform.position, target)  < 0.02f;
-        bool notMoving = Vector3.Distance(transform.position, lastPos) < 0.01f;
+        bool atTarget  = Vector3.Distance(transform.position, target)  < 0.05f;
+        bool notMoving = Vector3.Distance(transform.position, lastPos) < 0.05f;
 
         if (!atTarget)
         {
@@ -48,9 +48,9 @@ public class Agent : MonoBehaviour
             Path p = pathGA.SimulatePaths(transform.position, true);
             target = p.CreateAbsolutePath(transform.position).First();
             //Utils.DrawPath(p, transform.position, 10.0f);
-            Utils.DrawLine(p.CreateAbsolutePathWithStart(transform.position).Take(2).ToList(), 1.0f); 
+            Utils.DrawLine(p.CreateAbsolutePathWithStart(transform.position).Take(2).ToList(), 0.5f); 
 
-//            Debug.Log("[Agent]: fitness: " + p.ToViewString());
+            Debug.Log("[Agent]: fitness: " + p.ToViewString());
         }
     }
 

@@ -23,7 +23,7 @@ public class CollaborationFactory
         return collaborations;
     }
 
-    // @TODO encode the amount of agents
+    // @TODO encode the amount of agents in the individual
     public Collaboration GenCollaboration(int agentSCount = 3)
     {
         return new Collaboration(agentSCount); 

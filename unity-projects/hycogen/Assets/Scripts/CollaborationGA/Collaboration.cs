@@ -16,6 +16,19 @@ public class Collaboration
     // this may be important for future tweaking
     public int generationsLived = 0;
 
+    // bounds for random generation of AgentSettings and future Mutation
+    // .First ^= Minimum
+    // .Second ^= Maximum
+    public static Tuple<int,int>      collisionBounds       = new Tuple<int, int>(-100, 100);
+    public static Tuple<float,float>  greekBounds           = new Tuple<float, float>(0.0f, 1.0f);
+    public static Tuple<int,int>      popSizeBounds         = new Tuple<int, int>(2, 10);
+    public static Tuple<int,int>      subPathCountBounds    = new Tuple<int, int>(2, 5);
+    public static Tuple<float,float>  subPathLengthBounds   = new Tuple<float, float>(0.5f, 2.0f);
+    public static Tuple<int,int>      generationCountBounds = new Tuple<int, int>(1, 10);
+    public static Tuple<int,int>      modeBounds            = new Tuple<int, int>(1, 2);
+    public static Tuple<float,float>  maxDeviationBounds    = new Tuple<float, float>(0.5f, 5.0f);
+    public static Tuple<float,float>  speedBounds           = new Tuple<float, float>(0.5f, 5.0f);
+
     /*
      * creation of a Collaboration(-individual) randomly by specifiying the numbers of agents
      **/
@@ -34,31 +47,32 @@ public class Collaboration
         this.agentSCount = agentSList.Count;
     }
 
+    /*
+     * random generator for AgentSettings
+     * the bounds for the percentages are readonly (not supported yet by current c# version)
+     * the bounds for the collisions are defined by good measure - not tested yet
+     **/
+
     public static AgentSettings CreateAgentSettings()
     {
-        int collisionMinBound  = -100;
-        int collisionMaxBound  =  100;
-        float greekMinBound    = 0.0f;
-        float greekMaxBound    = 1.0f;
+        int wallCollision      = Random.Range(collisionBounds.First, collisionBounds.Second);
+        int riverCollision     = Random.Range(collisionBounds.First, collisionBounds.Second);
+        int agentCollision     = Random.Range(collisionBounds.First, collisionBounds.Second);
+        int targetCollision    = Random.Range(collisionBounds.First, collisionBounds.Second);
+        int agentPathCollision = Random.Range(collisionBounds.First, collisionBounds.Second);
 
-        int wallCollision      = Random.Range(collisionMinBound, collisionMaxBound);
-        int riverCollision     = Random.Range(collisionMinBound, collisionMaxBound);
-        int agentCollision     = Random.Range(collisionMinBound, collisionMaxBound);
-        int targetCollision    = Random.Range(collisionMinBound, collisionMaxBound);
-        int agentPathCollision = Random.Range(collisionMinBound, collisionMaxBound);
+        float alpha = Random.Range(greekBounds.First, greekBounds.Second);
+        float beta  = Random.Range(greekBounds.First, greekBounds.Second);
+        float gamma = Random.Range(greekBounds.First, greekBounds.Second);
+        float delta = Random.Range(greekBounds.First, greekBounds.Second);
 
-        float alpha = Random.Range(greekMinBound, greekMaxBound);
-        float beta  = Random.Range(greekMinBound, greekMaxBound);
-        float gamma = Random.Range(greekMinBound, greekMaxBound);
-        float delta = Random.Range(greekMinBound, greekMaxBound);
-
-        int popSize         = Random.Range(1, 100);     // this should not be below zero
-        int subPathCount    = Random.Range(1, 10);      // this should not be below zero
-        float subPathLength = Random.Range(0.5f, 2.0f); // this should not be below zero
-        int generationCount = Random.Range(1, 50);      // this should not be below one
-        int mode            = Random.Range(1, 2);       // these are the current maxBounds (OnePoint- & TwoPointCrossover)
-        float maxDeviation  = Random.Range(0.5f, 5.0f); // this should not be too low (maximum Mutation)
-        float speed         = Random.Range(0.5f, 5.0f); // this should not be below zero
+        int popSize         = Random.Range(popSizeBounds.First, popSizeBounds.Second);
+        int subPathCount    = Random.Range(subPathCountBounds.First, subPathCountBounds.Second);
+        float subPathLength = Random.Range(subPathLengthBounds.First, subPathLengthBounds.Second);
+        int generationCount = Random.Range(generationCountBounds.First, generationCountBounds.Second);
+        int mode            = Random.Range(modeBounds.First, modeBounds.Second);
+        float maxDeviation  = Random.Range(maxDeviationBounds.First, maxDeviationBounds.Second);
+        float speed         = Random.Range(speedBounds.First, speedBounds.Second);
 
         return CreateCustomAgentSettings(
               wallCollision,      riverCollision, agentCollision, targetCollision
@@ -89,7 +103,7 @@ public class Collaboration
     }
 
     /*
-     * Creates a random AgentSettingsList for an Collaboration (-individual)
+     * Creates a random AgentSettingsList for a Collaboration (-individual)
      **/
     public static List<AgentSettings> CreateAgentSList(int agentSCount)
     {
@@ -102,6 +116,5 @@ public class Collaboration
 
         return agentsSCount;
     }
-
 
 }

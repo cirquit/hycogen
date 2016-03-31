@@ -30,6 +30,11 @@ public class PathCrossover
         {
             Debug.Log("PathCrossover.cs: Constructor - beta has to be between 0.0 and 1.0, it's: " + beta.ToString());
         }
+
+        if (mode < 1 || mode > 2)
+        {
+            Debug.Log("PathCrossover.cs: Constructor - mode has to be either 1 or 2, it's: " + mode.ToString()); 
+        }
     }
 
 
@@ -43,7 +48,7 @@ public class PathCrossover
     {
         if (parents.Length < 2)
         {
-            //Debug.Log("PathCO.cs: Apply - parents.Count doesn't allow crossover, count = " + parents.Length.ToString());
+            Debug.Log("PathCO.cs: Apply - parents.Count doesn't allow crossover, count = " + parents.Length.ToString());
             return parents;
         }
 
@@ -147,14 +152,14 @@ public class PathCrossover
      **/
     public Path TwoPointCrossover(Path a, Path b)
     {
-        int len = Mathf.Min(a.path.Count, b.path.Count);
-        int cut = Random.Range(0, len);
+        int minLength = Mathf.Min(a.path.Count, b.path.Count);
+        int cut       = Random.Range(0, minLength);
 
         List<Vector2> a1     = a.path.Take(cut).ToList();
         List<Vector2> a1Rest = a.path.Skip(cut).ToList();
         List<Vector2> b1Rest = b.path.Skip(cut).ToList();
 
-        int sublen = len - cut;
+        int sublen = minLength - cut;
         int subcut = Random.Range(0, sublen);
 
         List<Vector2> a3 = a1Rest.Skip(subcut).ToList();
