@@ -110,13 +110,13 @@ public class Collaboration
     {
         List<AgentSettings> agentsSList = new List<AgentSettings>();
 
-//        for (int i = 0; i < agentSCount; i++)
-//        {
-//            agentsSList.Add(CreateAgentSettings());
+        for (int i = 0; i < agentSCount; i++)
+        {
+            agentsSList.Add(CreateAgentSettings());
   
-//        }
-        agentsSList.Add(CreateCustomAgentSettings(78, -12, -34, 46,  -9, 5, 4, 0.80f, 4, 0.97f, 0.22f, 1, 0.39f, 0.35f, 3.25f, 0.92f)); 
-        agentsSList.Add(CreateCustomAgentSettings(82,  23, -69, 44, -32, 6, 3, 1.27f, 7, 0.83f, 0.79f, 1, 1.00f, 0.44f, 3.24f, 1.68f)); 
+        }
+//        agentsSList.Add(CreateCustomAgentSettings(78, -12, -34, 46,  -9, 5, 4, 0.80f, 4, 0.97f, 0.22f, 1, 0.39f, 0.35f, 3.25f, 0.92f)); 
+//        agentsSList.Add(CreateCustomAgentSettings(82,  23, -69, 44, -32, 6, 3, 1.27f, 7, 0.83f, 0.79f, 1, 1.00f, 0.44f, 3.24f, 1.68f)); 
 
         return agentsSList;
     }

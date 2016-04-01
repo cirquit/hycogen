@@ -36,7 +36,7 @@ public class CollaborationSimulator : MonoBehaviour
         {
             agentS.Initialize(new Vector3(3.0f, 1.5f, z));
             z += 3.0f;
-            Debug.Log("ColSim.cs: Starting with agentSettings: " + agentS.ToString());
+            //Debug.Log("ColSim.cs: Starting with agentSettings: " + agentS.ToString());
         }
         simulating = true;
     }
@@ -92,6 +92,7 @@ public class CollaborationSimulator : MonoBehaviour
             if (simulating)
             {
                 currentFrames += 1;
+                Debug.Log("Frames...: " + currentFrames);
                 if (maxFrames <= currentFrames)
                 {
                     population[colCounter].fitness = CalculateFitness();
@@ -109,13 +110,14 @@ public class CollaborationSimulator : MonoBehaviour
                 if (colCounter < popSize)
                 {
                     StartSimulation(population[colCounter]);
+                    Debug.Log("Starting simulation for " + colCounter.ToString());
                 }
                 else
                 {
                     active    = false;
                     evaluated = true;
                     colCounter = 0;
-//                    Debug.Log("CollaborationSimulator.cs: Update - Finished all Simulations!");
+                    Debug.Log("CollaborationSimulator.cs: Update - Finished all Simulations!");
                 }
             }
         }

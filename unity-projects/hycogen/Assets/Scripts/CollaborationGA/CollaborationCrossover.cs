@@ -51,21 +51,28 @@ public class CollaborationCrossover
             return parents;
         }
 
+        Debug.Log("applying CO...plz dont die");
         Utils.Shuffle(parents);
+        Debug.Log("Shuffled parents");
 
         int             childrenSize = Mathf.FloorToInt(beta * parents.Length);
         Collaboration[] children     = new Collaboration[childrenSize];
+
+        Debug.Log("childrensize: " + childrenSize.ToString());
 
         for (int i = 0; i < childrenSize-1; i++)
         {
             children[i] = Crossover(parents[i], parents[i + 1]);
         }
 
+        Debug.Log("Created almost all children");
+
         if (childrenSize != 0)
         {
             children[childrenSize - 1] = Crossover(parents[0], parents[childrenSize - 1]);
         }
 
+        Debug.Log("Returning children");
         return children;
     }
 

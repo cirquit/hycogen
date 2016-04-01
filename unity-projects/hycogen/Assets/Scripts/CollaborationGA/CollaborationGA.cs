@@ -10,21 +10,21 @@ public class CollaborationGA : MonoBehaviour
 
     /** GENERATION **/
 
-    private int popSize = 3;
-    private int generationCount = 3;
+    private int popSize = 10;
+    private int generationCount = 10;
 
     /** CROSSOVER **/
 
     // how many new individuals should be created in %
-    private float alpha = 0.1f;
+    private float alpha = 0.4f;
 
     // how many children are created via crossover in %
-    private float beta  = 0.4f;
+    private float beta  = 0.5f;
 
     // defines the type of crossover we are using (no higher order functions available)
     // * 1 <-> OnePointCrossover
     // * 2 <-> TwoPointCrossover
-    private int mode = 1;
+    private int mode = 2;
 
     /** MUTATION **/
 
@@ -32,7 +32,7 @@ public class CollaborationGA : MonoBehaviour
     private float gamma = 0.5f;
 
     // how much of every individual should be mutated in %
-    private float delta = 0.2f;
+    private float delta = 1.0f;
 
     /** SIMULATION **/
     private int maxFrames = 60 * 10; // 10 seconds
@@ -73,6 +73,8 @@ public class CollaborationGA : MonoBehaviour
             {
                 if (cSimulator.evaluated)
                 {
+
+                    Debug.Log("Starting Collaboration GA...");
                     Collaboration[] children   = cCrossover.Apply(population);
                     Debug.Log("Applied CO");
                     Collaboration[] mutated    = cMutation.Apply(children);
@@ -87,7 +89,7 @@ public class CollaborationGA : MonoBehaviour
 
                 if (!cSimulator.active && !cSimulator.evaluated && currentGenerationCount < generationCount)
                 {
-                    //Debug.Log("starting simulation für genCount " + currentGenerationCount);
+                    Debug.Log("starting simulation für genCount " + currentGenerationCount);
                     cSimulator.population = population;
                     cSimulator.popSize    = popSize;
                     cSimulator.maxFrames  = maxFrames;
