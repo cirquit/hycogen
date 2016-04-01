@@ -11,6 +11,7 @@ public class CollaborationSimulator : MonoBehaviour
     private bool simulating = false;
 
     private int  colCounter = 0;
+    public  int  popSize    = 0;
 
     // this defines the duration of a single simulation
     public  int maxFrames;
@@ -35,6 +36,7 @@ public class CollaborationSimulator : MonoBehaviour
         {
             agentS.Initialize(new Vector3(3.0f, 1.5f, z));
             z += 3.0f;
+            Debug.Log("ColSim.cs: Starting with agentSettings: " + agentS.ToString());
         }
         simulating = true;
     }
@@ -60,8 +62,8 @@ public class CollaborationSimulator : MonoBehaviour
         {
             minDistance = Mathf.Min(agent.transform.position.x - (-5.0f), minDistance);
         }
-
-        return 1 / minDistance;
+            
+        return 1 / Mathf.Abs(minDistance);
     }
 
     public void RemoveAllAgents()
@@ -89,30 +91,39 @@ public class CollaborationSimulator : MonoBehaviour
         {
             if (simulating)
             {
+                currentFrames += 1;
                 if (maxFrames <= currentFrames)
                 {
                     population[colCounter].fitness = CalculateFitness();
-                    Debug.Log("CollaborationSimulator.cs: Assessed the following fitness - " + population[colCounter].fitness.ToString());
+                    population[colCounter].generationsLived += 1;
+                    Debug.Log("CollaborationSimulator.cs: Assessed the following fitness: " + population[colCounter].fitness.ToString());
                     RemoveAllAgents();
                     ResetFrames();
+                    colCounter++;
                     simulating = false;
                 }
             }
 
             if (!simulating)
             {
-                if (colCounter < population.Length - 1)
+                if (colCounter < popSize)
                 {
                     StartSimulation(population[colCounter]);
-                    colCounter++;
                 }
                 else
                 {
-                    active = false;
+                    active    = false;
                     evaluated = true;
-                    Debug.Log("CollaborationSimulator.cs: Update - Finished all Simulations!");
+                    colCounter = 0;
+//                    Debug.Log("CollaborationSimulator.cs: Update - Finished all Simulations!");
                 }
             }
         }
+    }
+
+
+    private void OnGUI()
+    {
+        GUI.TextField(new Rect(225, 40, 100, 20), "#Individual: " + colCounter.ToString());
     }
 }

@@ -10,21 +10,21 @@ public class CollaborationGA : MonoBehaviour
 
     /** GENERATION **/
 
-    private int popSize = 10;
-    private int generationCount = 10;
+    private int popSize = 3;
+    private int generationCount = 3;
 
     /** CROSSOVER **/
 
     // how many new individuals should be created in %
-    private float alpha = 0.2f;
+    private float alpha = 0.1f;
 
     // how many children are created via crossover in %
-    private float beta  = 0.2f;
+    private float beta  = 0.4f;
 
     // defines the type of crossover we are using (no higher order functions available)
     // * 1 <-> OnePointCrossover
     // * 2 <-> TwoPointCrossover
-    private int mode = 2;
+    private int mode = 1;
 
     /** MUTATION **/
 
@@ -32,10 +32,10 @@ public class CollaborationGA : MonoBehaviour
     private float gamma = 0.5f;
 
     // how much of every individual should be mutated in %
-    private float delta = 0.3f;
+    private float delta = 0.2f;
 
     /** SIMULATION **/
-    private int maxFrames = 60 * 15; // 15 seconds
+    private int maxFrames = 60 * 10; // 10 seconds
 
     private CollaborationFactory          cFactory      = null;
     private CollaborationCrossover        cCrossover    = null;
@@ -69,30 +69,57 @@ public class CollaborationGA : MonoBehaviour
                 population = cFactory.GenCollaborations();
             }
 
-            if (currentGenerationCount < generationCount - 1)
+            if (currentGenerationCount < generationCount)
             {
                 if (cSimulator.evaluated)
                 {
                     Collaboration[] children   = cCrossover.Apply(population);
+                    Debug.Log("Applied CO");
                     Collaboration[] mutated    = cMutation.Apply(children);
+                    Debug.Log("Applied MU");
                     Collaboration[] selected   = cNatSelection.Apply(population);
+                    Debug.Log("Applied NS");
                     population                 = cNatSelection.Repopulate(selected, mutated);
+                    Debug.Log("Applied RP");
                     currentGenerationCount    += 1;
                     cSimulator.evaluated       = false;
                 }
 
-                if (!cSimulator.active && !cSimulator.evaluated)
+                if (!cSimulator.active && !cSimulator.evaluated && currentGenerationCount < generationCount)
                 {
+                    //Debug.Log("starting simulation für genCount " + currentGenerationCount);
                     cSimulator.population = population;
-                    cSimulator.maxFrames = maxFrames;
-                    cSimulator.active = true;
+                    cSimulator.popSize    = popSize;
+                    cSimulator.maxFrames  = maxFrames;
+                    cSimulator.active     = true;
                 }
             }
             else
             {
+                //Debug.Log("curGen: " + currentGenerationCount);
                 active = false;
                 Debug.Log("CollaborationGA.cs: I'm done!");
             }
         }
+    }
+        
+    private void OnGUI()
+    {
+        int height = 20;
+        int width  = 200;
+        int lines  = Mathf.Min(20, popSize);
+
+        if (population != null)
+        {
+            GUI.Box(new Rect(0, 0, width, height * (lines + 1)), "Path fitness");
+
+            for (int i = 0; i < lines; i++)
+            {
+                string line = "#" + i.ToString() + ": " + population[i].ToString();
+                GUI.TextField(new Rect(0, (i+1) * height, width, height), line);
+            }
+        }
+
+        GUI.TextField(new Rect(225, 20, 100, 20), "Generation: " + currentGenerationCount.ToString());
     }
 }

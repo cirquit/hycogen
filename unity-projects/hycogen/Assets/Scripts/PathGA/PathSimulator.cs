@@ -8,7 +8,7 @@ public class PathSimulator
     private float riverCollision;
     private float agentPathCollision;
     private float targetCollision;
-    //private float agentCollision;
+    private float agentCollision;
 
     public PathSimulator(float wallCollision, float riverCollision, float agentPathCollision, float targetCollision, float agentCollision)
     {
@@ -16,7 +16,7 @@ public class PathSimulator
         this.riverCollision     = riverCollision;
         this.agentPathCollision = agentPathCollision;
         this.targetCollision    = targetCollision;
-        //this.agentCollision = agentCollision;
+        this.agentCollision = agentCollision;
     }
 
     /*
@@ -50,6 +50,7 @@ public class PathSimulator
                         break;
                     case "AgentPath":
                             fitness += agentPathCollision;
+                            p.agentPathcount += 1;
                         break;
                         // we only allow to get the reward once for the targetcollision
                     case "TargetTrigger":
@@ -59,9 +60,13 @@ public class PathSimulator
                             p.targetcount += 1; 
                         }
                         break;
+                    case "Agent":
+                            fitness += agentCollision;
+                            p.agentcount += 1;
+                        break;
 
-                        // Tags which are only for the Agent to collide with, e.g these can't be percepted via "sensors"
-                    case "Agent":                                         break;
+                    // Tags which are only for the Agent to collide with, e.g these can't be percepted via "sensors"
+                    case "River":                                         break;
                     case "Target":                                        break;
                     case "Platform":                                      break;
                     default:
@@ -77,7 +82,7 @@ public class PathSimulator
      * simulates the fitness for every path in the array and updates its fitness corresponding to the result
      * 
      **/
-    public void SimulatePaths(Vector3 curPos, Path[] ps, bool draw)
+    public void SimulatePaths(Vector3 curPos, Path[] ps)
     {
         for (int i = 0; i < ps.Length; i++)
         {

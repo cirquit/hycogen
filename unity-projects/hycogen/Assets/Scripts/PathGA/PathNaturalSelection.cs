@@ -43,7 +43,7 @@ public class PathNaturalSelection
         int popSize        = pFactory.popSize;
         int newIndividuals = Mathf.FloorToInt(alpha * popSize);
         int futureChildren = Mathf.FloorToInt(beta  * popSize);
-        int best = popSize - futureChildren - newIndividuals;
+        int best = Mathf.Max(0, popSize - futureChildren - newIndividuals);
 
         //Debug.Log("PathNS.cs: Apply - Popsize from PathFactory - " + popSize.ToString() + " | paths.Count - " + paths.Count().ToString());
         //Debug.Log("PathNS.cs: Apply - α = " + alpha.ToString() + " | newIndividuals = " + newIndividuals.ToString());

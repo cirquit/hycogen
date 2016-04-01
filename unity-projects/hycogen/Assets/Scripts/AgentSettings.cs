@@ -48,7 +48,12 @@ public class AgentSettings
         }
         else
         {
-            return pathGA.ToString() + ", speed:" + this.speed; 
+            return pathGA.ToString() + ", speed:" + this.speed.ToString("F2"); 
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return pathGA.GetHashCode();
     }
 }

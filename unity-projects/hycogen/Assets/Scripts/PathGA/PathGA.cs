@@ -99,7 +99,7 @@ public class PathGA
     /*
      * starts the genetic algorithm and returns the next best path after #generationCount generations
      **/
-    public Path SimulatePaths(Vector3 curPos, bool drawPaths)
+    public Path SimulatePaths(Vector3 curPos)
     {
         if (population == null)
         {
@@ -116,7 +116,7 @@ public class PathGA
 
         for (int i = 0; i < generationCount - 1; i++)
         {
-            pSimulator.SimulatePaths(curPos, population, drawPaths);
+            pSimulator.SimulatePaths(curPos, population);
             Path[] children   = pCrossover.Apply(population);
             Path[] mutated    = pMutation.Apply(children);
             Path[] selected   = pNatSelection.Apply(population);
@@ -150,10 +150,10 @@ public class PathGA
 
     override public string ToString()
     {
-        return "WC:"   + this.wallCollision      + ", RC:"    + this.riverCollision  + ", AC:"     + this.agentCollision
-          + ", APC:"   + this.agentPathCollision + ", TC:"    + this.targetCollision + ", PopS:"   + this.popSize 
-          + ", subPC:" + this.subPathCount       + ", subPL:" + this.subPathLength   + ", GENC:"   + this.generationCount
-          + ", α:"     + this.alpha              + ", β: "    + this.beta            + ", COm:"    + this.mode
-          + ", γ: "    + this.gamma              + ", δ:"     + this.delta           + ", maxDev:" + this.maxDeviation;
+        return "WC: "   + this.wallCollision        + ", RC: "    + this.riverCollision  + ", AC: "     + this.agentCollision
+          + ", APC: "   + this.agentPathCollision   + ", TC: "    + this.targetCollision + ", PopS: "   + this.popSize 
+          + ", subPC: " + this.subPathCount         + ", subPL: " + this.subPathLength.ToString("F2")   + ", GENC: "   + this.generationCount
+          + ", α: "     + this.alpha.ToString("F2") + ", β: "     + this.beta.ToString("F2")            + ", COm: "    + this.mode
+          + ", γ: "     + this.gamma.ToString("F2") + ", δ: "     + this.delta.ToString("F2")           + ", maxDev: " + this.maxDeviation.ToString("F2");
     }
 }

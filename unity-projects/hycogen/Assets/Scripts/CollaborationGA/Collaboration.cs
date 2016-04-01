@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Collaboration
 {
@@ -27,7 +28,7 @@ public class Collaboration
     public static Tuple<int,int>      generationCountBounds = new Tuple<int, int>(1, 10);
     public static Tuple<int,int>      modeBounds            = new Tuple<int, int>(1, 2);
     public static Tuple<float,float>  maxDeviationBounds    = new Tuple<float, float>(0.5f, 5.0f);
-    public static Tuple<float,float>  speedBounds           = new Tuple<float, float>(0.5f, 5.0f);
+    public static Tuple<float,float>  speedBounds           = new Tuple<float, float>(0.5f, 3.0f);
 
     /*
      * creation of a Collaboration(-individual) randomly by specifiying the numbers of agents
@@ -107,14 +108,32 @@ public class Collaboration
      **/
     public static List<AgentSettings> CreateAgentSList(int agentSCount)
     {
-        List<AgentSettings> agentsSCount = new List<AgentSettings>();
+        List<AgentSettings> agentsSList = new List<AgentSettings>();
 
-        for (int i = 0; i < agentSCount; i++)
-        {
-            agentsSCount.Add(CreateAgentSettings());
-        }
+//        for (int i = 0; i < agentSCount; i++)
+//        {
+//            agentsSList.Add(CreateAgentSettings());
+  
+//        }
+        agentsSList.Add(CreateCustomAgentSettings(78, -12, -34, 46,  -9, 5, 4, 0.80f, 4, 0.97f, 0.22f, 1, 0.39f, 0.35f, 3.25f, 0.92f)); 
+        agentsSList.Add(CreateCustomAgentSettings(82,  23, -69, 44, -32, 6, 3, 1.27f, 7, 0.83f, 0.79f, 1, 1.00f, 0.44f, 3.24f, 1.68f)); 
 
-        return agentsSCount;
+        return agentsSList;
     }
 
+    public override string ToString()
+    {
+        int hash = 0;
+
+        foreach (AgentSettings aS in agentSList)
+        {
+            hash += aS.GetHashCode();
+        }
+
+        hash = hash % 100000;
+
+        string res = hash.ToString() + " | GLd: " + generationsLived.ToString() + "| F: " + fitness.ToString("F2");
+
+        return res;
+    }
 }

@@ -8,9 +8,11 @@ public class Path
 
     // testing puposes
     // @TODO remove (remove in PathSimulator too)
-    public int rivercount = 0;
-    public int targetcount = 0;
-    public int wallcount   = 0;
+    public int rivercount     = 0;
+    public int targetcount    = 0;
+    public int wallcount      = 0;
+    public int agentPathcount = 0;
+    public int agentcount     = 0;
 
     // fitness will be evaluated in the simulation
     public float fitness = 0;
@@ -35,7 +37,7 @@ public class Path
 
     }
 
-    public Path(int subpathCount = 3, float subpathLength = 1)
+    public Path(int subpathCount = 3, float subpathLength = 1.0f)
     {
         this.path          = CreatePath(subpathCount, subpathLength);
         this.subpathCount  = subpathCount;
@@ -44,7 +46,9 @@ public class Path
 
     /*
      * creates a semi random point with a random ° based on the unit circle
-     * its length is in the range of [0, subpathLength]
+     * its length is in the range of [0.5f, subpathLength]
+     * 
+     * 0.5, so the agent doesn't have to calculate every couple frames a new path
      * 
      **/
     public static Vector2 CreateSemiRandomPoint(float subpathLength)
@@ -53,7 +57,7 @@ public class Path
         float x = Mathf.Cos(phi);
         float z = Mathf.Sin(phi);
 
-        float length = Random.Range(0.0f, subpathLength);
+        float length = Random.Range(0.5f, subpathLength);
 
         return new Vector2(x * length, z * length);
     }
@@ -179,7 +183,8 @@ public class Path
     public string ToViewString()
     {
         return this.GetCustomHash(5) + "| GLd: " + generationsLived.ToString() + " | F: " + fitness.ToString()
-            + "| RC: " + rivercount + " | TC: " + targetcount + " | WC: " + wallcount;
+            + " | RC: " + rivercount + " | TC: " + targetcount + " | WC: " + wallcount + " | AC: " + agentcount
+            + " | APC: " + agentPathcount;
     }
 
     /*
