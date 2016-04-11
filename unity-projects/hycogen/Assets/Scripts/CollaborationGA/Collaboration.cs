@@ -67,13 +67,13 @@ public class Collaboration
         float gamma = Random.Range(greekBounds.First, greekBounds.Second);
         float delta = Random.Range(greekBounds.First, greekBounds.Second);
 
-        int popSize         = Random.Range(popSizeBounds.First, popSizeBounds.Second);
-        int subPathCount    = Random.Range(subPathCountBounds.First, subPathCountBounds.Second);
-        float subPathLength = Random.Range(subPathLengthBounds.First, subPathLengthBounds.Second);
-        int generationCount = Random.Range(generationCountBounds.First, generationCountBounds.Second);
-        int mode            = Random.Range(modeBounds.First, modeBounds.Second);
-        float maxDeviation  = Random.Range(maxDeviationBounds.First, maxDeviationBounds.Second);
-        float speed         = Random.Range(speedBounds.First, speedBounds.Second);
+        int   popSize         = Random.Range(popSizeBounds.First, popSizeBounds.Second);
+        int   subPathCount    = Random.Range(subPathCountBounds.First, subPathCountBounds.Second);
+        float subPathLength   = Random.Range(subPathLengthBounds.First, subPathLengthBounds.Second);
+        int   generationCount = Random.Range(generationCountBounds.First, generationCountBounds.Second);
+        int   mode            = Random.Range(modeBounds.First, modeBounds.Second);
+        float maxDeviation    = Random.Range(maxDeviationBounds.First, maxDeviationBounds.Second);
+        float speed           = Random.Range(speedBounds.First, speedBounds.Second);
 
         return CreateCustomAgentSettings(
               wallCollision,      riverCollision, agentCollision, targetCollision

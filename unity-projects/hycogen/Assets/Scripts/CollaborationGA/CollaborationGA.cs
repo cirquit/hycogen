@@ -24,7 +24,7 @@ public class CollaborationGA : MonoBehaviour
     // defines the type of crossover we are using (no higher order functions available)
     // * 1 <-> OnePointCrossover
     // * 2 <-> TwoPointCrossover
-    private int mode = 2;
+    private int mode = 1;
 
     /** MUTATION **/
 
@@ -98,7 +98,6 @@ public class CollaborationGA : MonoBehaviour
             }
             else
             {
-                //Debug.Log("curGen: " + currentGenerationCount);
                 active = false;
                 Debug.Log("CollaborationGA.cs: I'm done!");
             }

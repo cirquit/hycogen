@@ -92,7 +92,7 @@ public class CollaborationSimulator : MonoBehaviour
             if (simulating)
             {
                 currentFrames += 1;
-                Debug.Log("Frames...: " + currentFrames);
+              //  Debug.Log("Frames...: " + currentFrames);
                 if (maxFrames <= currentFrames)
                 {
                     population[colCounter].fitness = CalculateFitness();
@@ -110,7 +110,7 @@ public class CollaborationSimulator : MonoBehaviour
                 if (colCounter < popSize)
                 {
                     StartSimulation(population[colCounter]);
-                    Debug.Log("Starting simulation for " + colCounter.ToString());
+                    // Debug.Log("Starting simulation for " + colCounter.ToString());
                 }
                 else
                 {

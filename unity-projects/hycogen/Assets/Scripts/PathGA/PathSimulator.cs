@@ -16,7 +16,7 @@ public class PathSimulator
         this.riverCollision     = riverCollision;
         this.agentPathCollision = agentPathCollision;
         this.targetCollision    = targetCollision;
-        this.agentCollision = agentCollision;
+        this.agentCollision     = agentCollision;
     }
 
     /*

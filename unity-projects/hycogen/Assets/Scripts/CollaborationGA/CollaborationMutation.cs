@@ -56,7 +56,7 @@ public class CollaborationMutation
      **/
     public AgentSettings Mutate(AgentSettings a)
     {
-        for (int i = 0; i < AgentSettings.settingsCount+1; i++)
+        for (int i = 0; i < AgentSettings.settingsCount; i++)
         {
             switch (i)
             {
@@ -128,20 +128,19 @@ public class CollaborationMutation
     {
         float deviation = Random.Range(bounds.First, bounds.Second);
 
-        while (x + deviation > bounds.Second
-            || x - deviation < bounds.First)
-        {
-            deviation = Random.Range(bounds.First, bounds.Second);
-        }
-
         if (x + deviation > bounds.Second)
         {
             return x + deviation;
         }
-        else
+        else if (x - deviation < bounds.First)
         {
             return x - deviation;
         }
+        else
+        {
+            return x;
+        }
+
     }
 
     /*
@@ -151,19 +150,17 @@ public class CollaborationMutation
     {
         int deviation = Random.Range(bounds.First, bounds.Second);
 
-        while (x + deviation > bounds.Second
-            || x - deviation < bounds.First)
-        {
-            deviation = Random.Range(bounds.First, bounds.Second);
-        }
-
         if (x + deviation > bounds.Second)
         {
             return x + deviation;
         }
-        else
+        else if (x - deviation < bounds.First)
         {
             return x - deviation;
+        }
+        else
+        {
+            return x;
         }
     }
 }

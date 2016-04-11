@@ -46,7 +46,7 @@ public class CollaborationNaturalSelection
 
         // would be nice to mention, as before the Max() this resulted in a NumberOverflow Error
         // so if alpha & beta are telling that there are 100% children and 100% new individuals, the children have priority
-        int best = Mathf.Max(0, popSize - futureChildren - newIndividuals);
+        int best = Mathf.Max(0, popSize - (futureChildren + newIndividuals));
 
         //Debug.Log("CollaborationNS.cs: Apply - Popsithat ze from CollaborationFactory - " + popSize.ToString() + " | cols.Count - " + cols.Count().ToString());
         //Debug.Log("CollaborationNS.cs: Apply - α = " + alpha.ToString() + " | newIndividuals = " + newIndividuals.ToString());
