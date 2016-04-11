@@ -5,13 +5,15 @@ public class CollaborationSimulator : MonoBehaviour
 {
 
     /** STATES **/
-    public  bool active     = false;
-    public  bool evaluated  = false;
+    public  bool active          = false;
+    public  bool evaluated       = false;
 
-    private bool simulating = false;
+    private bool simulating      = false;
 
-    private int  colCounter = 0;
-    public  int  popSize    = 0;
+    private int  colCounter      = 0;
+    private int  simCounter      = 0;    
+    public  int  simulationCount = 0;
+    public  int  popSize         = 0;
 
     // this defines the duration of a single simulation
     public  int maxFrames;
@@ -36,7 +38,7 @@ public class CollaborationSimulator : MonoBehaviour
         {
             agentS.Initialize(new Vector3(3.0f, 1.5f, z));
             z += 3.0f;
-            //Debug.Log("ColSim.cs: Starting with agentSettings: " + agentS.ToString());
+            Debug.Log("ColSim.cs: Starting with agentSettings: " + agentS.ToString());
         }
         simulating = true;
     }
@@ -47,6 +49,15 @@ public class CollaborationSimulator : MonoBehaviour
     public void ResetFrames()
     {
         currentFrames = 0;
+    }
+
+    /*
+     * a more descriptive name for future use
+     **/
+
+    public void ResetSimCounter()
+    {
+        simCounter = 0;
     }
 
 
@@ -95,13 +106,24 @@ public class CollaborationSimulator : MonoBehaviour
               //  Debug.Log("Frames...: " + currentFrames);
                 if (maxFrames <= currentFrames)
                 {
-                    population[colCounter].fitness = CalculateFitness();
-                    population[colCounter].generationsLived += 1;
+                    population[colCounter].fitness = Mathf.Max(CalculateFitness(), population[colCounter].fitness);
                     Debug.Log("CollaborationSimulator.cs: Assessed the following fitness: " + population[colCounter].fitness.ToString());
                     RemoveAllAgents();
                     ResetFrames();
-                    colCounter++;
-                    simulating = false;
+                    simCounter += 1;
+
+                    if (simulationCount <= simCounter)
+                    {
+                        population[colCounter].generationsLived += 1;
+                        colCounter++;
+                        simulating = false;
+                        ResetSimCounter();
+
+                    } else
+                    {
+                        StartSimulation(population[colCounter]);
+                    }
+
                 }
             }
 
@@ -126,6 +148,6 @@ public class CollaborationSimulator : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.TextField(new Rect(225, 40, 100, 20), "#Individual: " + colCounter.ToString());
+        GUI.TextField(new Rect(225, 40, 200, 20), "#Individual: " + colCounter.ToString() + ", #Sim: " + simCounter.ToString());
     }
 }

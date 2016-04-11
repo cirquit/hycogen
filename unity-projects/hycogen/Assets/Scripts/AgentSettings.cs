@@ -35,6 +35,11 @@ public class AgentSettings
 
             agentScript.pathGA = this.pathGA;
             agentScript.speed  = this.speed;
+
+            if (pathGA.riverCollision >= 50)
+            {
+                agent.GetComponent<Renderer>().material = Resources.Load("suicide-mat") as Material;
+            }
         }
     }
 

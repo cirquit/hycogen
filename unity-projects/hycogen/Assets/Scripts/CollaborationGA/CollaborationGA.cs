@@ -10,16 +10,16 @@ public class CollaborationGA : MonoBehaviour
 
     /** GENERATION **/
 
-    private int popSize = 10;
-    private int generationCount = 10;
+    private int popSize = 30;
+    private int generationCount = 100;
 
     /** CROSSOVER **/
 
     // how many new individuals should be created in %
-    private float alpha = 0.4f;
+    private float alpha = 0.2f;
 
     // how many children are created via crossover in %
-    private float beta  = 0.5f;
+    private float beta  = 0.3f;
 
     // defines the type of crossover we are using (no higher order functions available)
     // * 1 <-> OnePointCrossover
@@ -29,13 +29,14 @@ public class CollaborationGA : MonoBehaviour
     /** MUTATION **/
 
     // how many individuals are selected for mutation in %
-    private float gamma = 0.5f;
+    private float gamma = 0.1f;
 
     // how much of every individual should be mutated in %
-    private float delta = 1.0f;
+    private float delta = 0.1f;
 
     /** SIMULATION **/
-    private int maxFrames = 60 * 10; // 10 seconds
+    private int maxFrames       = 60 * 10; // 10 seconds
+    private int simulationCount = 10;      // amount of simulations for every individual
 
     private CollaborationFactory          cFactory      = null;
     private CollaborationCrossover        cCrossover    = null;
@@ -90,10 +91,11 @@ public class CollaborationGA : MonoBehaviour
                 if (!cSimulator.active && !cSimulator.evaluated && currentGenerationCount < generationCount)
                 {
                     Debug.Log("starting simulation für genCount " + currentGenerationCount);
-                    cSimulator.population = population;
-                    cSimulator.popSize    = popSize;
-                    cSimulator.maxFrames  = maxFrames;
-                    cSimulator.active     = true;
+                    cSimulator.population      = population;
+                    cSimulator.popSize         = popSize;
+                    cSimulator.maxFrames       = maxFrames;
+                    cSimulator.simulationCount = simulationCount;
+                    cSimulator.active          = true;
                 }
             }
             else

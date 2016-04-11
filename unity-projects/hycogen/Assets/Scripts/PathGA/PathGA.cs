@@ -94,6 +94,7 @@ public class PathGA
         this.pNatSelection = new PathNaturalSelection(this.alpha, this.beta, this.pFactory); 
         this.pCrossover    = new PathCrossover(this.beta, this.mode, this.pFactory);
         this.pMutation     = new PathMutation(this.gamma, this.delta, this.maxDeviation);
+        population         = null;
     }
 
     /*
@@ -109,6 +110,7 @@ public class PathGA
         { 
             for (int i = 0; i < popSize; i++)
             {
+                //Debug.Log("PathGA.cs: SimulatePaths - popSize " + popSize + ", index = " + i);
                 population[i].BuildNextStep();
             }
         }

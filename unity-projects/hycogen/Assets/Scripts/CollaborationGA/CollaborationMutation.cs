@@ -128,11 +128,11 @@ public class CollaborationMutation
     {
         float deviation = Random.Range(bounds.First, bounds.Second);
 
-        if (x + deviation > bounds.Second)
+        if (x + deviation < bounds.Second)
         {
             return x + deviation;
         }
-        else if (x - deviation < bounds.First)
+        else if (x - deviation > bounds.First)
         {
             return x - deviation;
         }
@@ -150,11 +150,11 @@ public class CollaborationMutation
     {
         int deviation = Random.Range(bounds.First, bounds.Second);
 
-        if (x + deviation > bounds.Second)
+        if (x + deviation < bounds.Second)
         {
             return x + deviation;
         }
-        else if (x - deviation < bounds.First)
+        else if (x - deviation > bounds.First)
         {
             return x - deviation;
         }

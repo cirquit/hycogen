@@ -45,8 +45,11 @@ public class PathSimulator
                             p.wallcount += 1;
                         break;
                     case "RiverTrigger":
+                        if (p.rivercount < 1)
+                        {
                             fitness += riverCollision;
                             p.rivercount += 1;
+                        }
                         break;
                     case "AgentPath":
                             fitness += agentPathCollision;
@@ -54,15 +57,15 @@ public class PathSimulator
                         break;
                         // we only allow to get the reward once for the targetcollision
                     case "TargetTrigger":
-                        if (p.targetcount < 1)
-                        {
                             fitness += targetCollision;
                             p.targetcount += 1; 
-                        }
                         break;
                     case "Agent":
+                        if (p.agentcount < 1)
+                        {
                             fitness += agentCollision;
                             p.agentcount += 1;
+                        }
                         break;
 
                     // Tags which are only for the Agent to collide with, e.g these can't be percepted via "sensors"

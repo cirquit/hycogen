@@ -45,10 +45,6 @@ public class CollaborationCrossover
      **/
     public Collaboration[] Apply(Collaboration[] parents)
     {
-        int y = Mathf.FloorToInt(parents.Length * beta);
-        Collaboration[] x = parents.Take(y).ToArray();
-        return x;
-/*
         if (parents.Length < 2)
         {
             Debug.Log("PathCO.cs: Apply - parents.Count doesn't allow crossover, count = " + parents.Length.ToString());
@@ -77,7 +73,7 @@ public class CollaborationCrossover
         }
 
         Debug.Log("Returning children");
-        return children; */
+        return children;
     }
 
 

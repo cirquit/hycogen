@@ -62,7 +62,7 @@ public class Agent : MonoBehaviour
         Path p = pathGA.SimulatePaths(transform.position);
         Vector3 nextTarget = p.CreateAbsolutePath(transform.position).First();
 
-        Utils.DrawPath(p, transform.position, 0.5f);
+        Utils.DrawPath(p, transform.position, 1.0f);
 
         //Utils.DrawLine(p.CreateAbsolutePathWithStart(transform.position).Take(2).ToList(), 0.5f); 
 

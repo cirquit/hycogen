@@ -60,6 +60,7 @@ public class PathCrossover
         for (int i = 0; i < childrenSize-1; i++)
         {
             children[i] = Crossover(parents[i], parents[i + 1]);
+         //   Debug.Log("PathCO.cs: Apply - pLength " + parents.Length + ", index = " + i);
         }
 
         if (childrenSize != 0)

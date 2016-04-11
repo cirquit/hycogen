@@ -24,11 +24,11 @@ public class Collaboration
     public static Tuple<float,float>  greekBounds           = new Tuple<float, float>(0.0f, 1.0f);
     public static Tuple<int,int>      popSizeBounds         = new Tuple<int, int>(2, 10);
     public static Tuple<int,int>      subPathCountBounds    = new Tuple<int, int>(2, 5);
-    public static Tuple<float,float>  subPathLengthBounds   = new Tuple<float, float>(0.5f, 2.0f);
+    public static Tuple<float,float>  subPathLengthBounds   = new Tuple<float, float>(0.5f, 4.0f);
     public static Tuple<int,int>      generationCountBounds = new Tuple<int, int>(1, 10);
     public static Tuple<int,int>      modeBounds            = new Tuple<int, int>(1, 2);
     public static Tuple<float,float>  maxDeviationBounds    = new Tuple<float, float>(0.5f, 5.0f);
-    public static Tuple<float,float>  speedBounds           = new Tuple<float, float>(0.5f, 3.0f);
+    public static Tuple<float,float>  speedBounds           = new Tuple<float, float>(0.5f, 1.5f);
 
     /*
      * creation of a Collaboration(-individual) randomly by specifiying the numbers of agents
@@ -60,7 +60,7 @@ public class Collaboration
         int riverCollision     = Random.Range(collisionBounds.First, collisionBounds.Second);
         int agentCollision     = Random.Range(collisionBounds.First, collisionBounds.Second);
         int targetCollision    = Random.Range(collisionBounds.First, collisionBounds.Second);
-        int agentPathCollision = Random.Range(collisionBounds.First, collisionBounds.Second);
+        int agentPathCollision = 0; //Random.Range(collisionBounds.First, collisionBounds.Second);
 
         float alpha = Random.Range(greekBounds.First, greekBounds.Second);
         float beta  = Random.Range(greekBounds.First, greekBounds.Second);
@@ -114,9 +114,9 @@ public class Collaboration
         {
             agentsSList.Add(CreateAgentSettings());
   
-        }
-//        agentsSList.Add(CreateCustomAgentSettings(78, -12, -34, 46,  -9, 5, 4, 0.80f, 4, 0.97f, 0.22f, 1, 0.39f, 0.35f, 3.25f, 0.92f)); 
-//        agentsSList.Add(CreateCustomAgentSettings(82,  23, -69, 44, -32, 6, 3, 1.27f, 7, 0.83f, 0.79f, 1, 1.00f, 0.44f, 3.24f, 1.68f)); 
+        } 
+//        agentsSList.Add(CreateCustomAgentSettings(-50, 100, 0,    0, 0, 10, 4, 3.0f, 10, 0.25f, 0.25f, 2, 0.5f, 0.5f, 2.0f, 2.0f)); 
+//        agentsSList.Add(CreateCustomAgentSettings(-50, -25, 50, 100, 0, 10, 4, 2.0f, 10, 0.25f, 0.25f, 2, 0.5f, 0.5f, 2.0f, 3.0f)); 
 
         return agentsSList;
     }
