@@ -52,7 +52,7 @@ public class CollaborationNaturalSelection
         //Debug.Log("CollaborationNS.cs: Apply - α = " + alpha.ToString() + " | newIndividuals = " + newIndividuals.ToString());
         //Debug.Log("CollaborationNS.cs: Apply - β = " + beta.ToString()  + " | futureChildren = " + futureChildren.ToString());
 
-        cols = cols.OrderByDescending(c => c.fitness).ToArray();
+        cols = cols.OrderBy(c => c.fitness).ToArray();
 
         Collaboration[] selected = new Collaboration[best];
 
@@ -84,13 +84,14 @@ public class CollaborationNaturalSelection
         //   Debug.Log("CollaborationNS.cs: Repopulate - parentsCount: " + parentsCount.ToString());
         //   Debug.Log("CollaborationNS.cs: Repopulate - childrenCount: " + childrenCount.ToString());
 
-        parents = parents.OrderByDescending(c => c.fitness).ToArray();
+        parents = parents.OrderBy(c => c.fitness).ToArray();
 
         for (int i = 0; i < cFactory.popSize; i++)
         {
             if (i < parentsCount)
             {
                 newPopulation[i] = parents[i];
+                newPopulation[i].fitness = 0.0f;
             }
             else if ((i - parentsCount) < childrenCount)
             {

@@ -10,7 +10,7 @@ public class CollaborationGA : MonoBehaviour
 
     /** GENERATION **/
 
-    private int popSize = 30;
+    private int popSize = 20;
     private int generationCount = 100;
 
     /** CROSSOVER **/
@@ -29,10 +29,10 @@ public class CollaborationGA : MonoBehaviour
     /** MUTATION **/
 
     // how many individuals are selected for mutation in %
-    private float gamma = 0.1f;
+    private float gamma = 0.5f;
 
     // how much of every individual should be mutated in %
-    private float delta = 0.1f;
+    private float delta = 0.5f;
 
     /** SIMULATION **/
     private int maxFrames       = 60 * 10; // 10 seconds

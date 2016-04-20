@@ -1,0 +1,101 @@
+WC: 14, RC: 52, AC: -78, APC: 0, TC: 38, PopS: 7, subPC: 3, subPL: 3.58, GENC: 6, α: 0.22, β: 0.64, COm: 1, γ: 0.90, δ: 0.48, maxDev: 1.15, speed:2.71, crossed: 1, with: 1.8
+WC: 67, RC: 86, AC: 51, APC: 0, TC: -63, PopS: 2, subPC: 3, subPL: 3.33, GENC: 7, α: 0.30, β: 0.52, COm: 1, γ: 0.35, δ: 0.27, maxDev: 4.23, speed:1.46, crossed: 0, with: 0
+
+WC: -26, RC: 6, AC: 52, APC: 0, TC: 55, PopS: 5, subPC: 3, subPL: 3.33, GENC: 7, α: 0.25, β: 0.86, COm: 1, γ: 0.98, δ: 0.35, maxDev: 2.96, speed:1.95, crossed: 1, with: 4.0
+WC: 34, RC: 69, AC: 30, APC: 0, TC: 24, PopS: 4, subPC: 3, subPL: 3.05, GENC: 6, α: 0.74, β: 0.29, COm: 1, γ: 0.27, δ: 0.35, maxDev: 1.11, speed:0.80, crossed: 0, with: 0
+
+WC: -51, RC: -58, AC: -4, APC: 0, TC: -40, PopS: 2, subPC: 3, subPL: 0.86, GENC: 3, α: 0.10, β: 0.20, COm: 1, γ: 0.15, δ: 0.32, maxDev: 2.65, speed:2.24, crossed: 1, with: 3.7
+WC: 13, RC: 83, AC: -49, APC: 0, TC: -73, PopS: 9, subPC: 4, subPL: 3.12, GENC: 7, α: 0.97, β: 0.34, COm: 1, γ: 0.90, δ: 0.89, maxDev: 1.68, speed:1.37, crossed: 0, with: 0
+
+WC: -22, RC: 19, AC: -43, APC: -50, TC: 5, PopS: 8, subPC: 3, subPL: 2.52, GENC: 9, α: 0.51, β: 0.29, COm: 1, γ: 0.71, δ: 0.44, maxDev: 3.09, speed:2.02, crossed: 1, with: 4.4
+WC: -81, RC: 43, AC: 63, APC: 0, TC: 48, PopS: 8, subPC: 2, subPL: 2.11, GENC: 6, α: 0.68, β: 0.85, COm: 1, γ: 0.08, δ: 0.78, maxDev: 3.61, speed:2.12, crossed: 0, with: 0
+
+WC: 77, RC: -44, AC: 67, APC: 0, TC: -63, PopS: 8, subPC: 4, subPL: 1.12, GENC: 6, α: 0.70, β: 0.64, COm: 1, γ: 0.03, δ: 0.17, maxDev: 4.00, speed:1.44, crossed: 1, with: 0.1
+WC: -20, RC: 46, AC: 94, APC: 0, TC: 57, PopS: 6, subPC: 4, subPL: 3.67, GENC: 3, α: 0.34, β: 0.16, COm: 1, γ: 0.70, δ: 0.84, maxDev: 4.66, speed:2.41, crossed: 0, with: 0
+
+WC: -20, RC: 79, AC: 98, APC: 0, TC: 84, PopS: 6, subPC: 3, subPL: 1.59, GENC: 9, α: 0.91, β: 0.09, COm: 1, γ: 0.02, δ: 0.45, maxDev: 0.51, speed:2.52, crossed: 1, with: 0.2
+WC: -53, RC: 85, AC: -56, APC: 0, TC: -81, PopS: 2, subPC: 3, subPL: 2.56, GENC: 8, α: 0.02, β: 0.04, COm: 1, γ: 0.68, δ: 0.30, maxDev: 3.37, speed:2.41, crossed: 0, with: 0
+
+WC: -53, RC: 85, AC: -56, APC: 0, TC: -81, PopS: 2, subPC: 3, subPL: 2.56, GENC: 8, α: 0.02, β: 0.04, COm: 1, γ: 0.68, δ: 0.30, maxDev: 3.37, speed:2.41, crossed: 1, with: 3.8
+WC: -20, RC: 79, AC: 98, APC: 0, TC: 84, PopS: 6, subPC: 3, subPL: 1.59, GENC: 9, α: 0.91, β: 0.09, COm: 1, γ: 0.02, δ: 0.45, maxDev: 0.51, speed:2.52, crossed: 0, with: 0
+
+WC: -3, RC: 53, AC: -18, APC: -89, TC: -74, PopS: 5, subPC: 4, subPL: 3.23, GENC: 7, α: 0.86, β: 0.00, COm: 1, γ: 0.69, δ: 0.54, maxDev: 1.03, speed:2.44, crossed: 1, with: 2.2
+WC: -43, RC: 23, AC: -8, APC: -1, TC: 5, PopS: 3, subPC: 4, subPL: 1.54, GENC: 9, α: 0.50, β: 0.57, COm: 1, γ: 0.85, δ: 0.25, maxDev: 3.68, speed:2.47, crossed: 0, with: 0
+
+WC: -43, RC: 23, AC: -8, APC: -1, TC: 5, PopS: 3, subPC: 4, subPL: 1.54, GENC: 9, α: 0.50, β: 0.57, COm: 1, γ: 0.85, δ: 0.25, maxDev: 3.68, speed:2.47, crossed: 0, with: 1.8
+WC: -3, RC: 59, AC: 83, APC: -96, TC: -74, PopS: 5, subPC: 4, subPL: 2.50, GENC: 7, α: 0.05, β: 0.00, COm: 1, γ: 0.23, δ: 0.54, maxDev: 1.03, speed:2.44, crossed: 0, with: 0
+
+WC: -28, RC: -102, AC: 33, APC: 0, TC: -53, PopS: 7, subPC: 3, subPL: 3.80, GENC: 3, α: 0.90, β: 0.28, COm: 1, γ: 0.66, δ: 0.27, maxDev: 3.85, speed:1.51, crossed: 1, with: 4.4
+WC: -43, RC: 23, AC: -8, APC: -1, TC: 5, PopS: 3, subPC: 4, subPL: 1.54, GENC: 9, α: 0.50, β: 0.57, COm: 1, γ: 0.85, δ: 0.25, maxDev: 3.68, speed:2.47, crossed: 0, with: 0
+
+WC: -5, RC: 23, AC: -31, APC: -1, TC: 5, PopS: 3, subPC: 4, subPL: 3.63, GENC: 6, α: 0.50, β: 0.57, COm: 1, γ: 0.85, δ: 0.25, maxDev: 3.68, speed:2.47, crossed: 1, with: 0.1
+WC: -3, RC: 59, AC: 83, APC: -96, TC: -74, PopS: 5, subPC: 4, subPL: 2.50, GENC: 7, α: 0.05, β: 0.00, COm: 1, γ: 0.23, δ: 0.54, maxDev: 1.03, speed:2.44, crossed: 0, with: 0
+
+WC: -4, RC: 25, AC: 77, APC: 0, TC: 94, PopS: 2, subPC: 4, subPL: 3.48, GENC: 6, α: 0.97, β: 0.02, COm: 1, γ: 0.56, δ: 0.55, maxDev: 3.58, speed:2.75, crossed: 1, with: 0.9
+WC: -99, RC: 75, AC: 60, APC: 0, TC: -97, PopS: 6, subPC: 4, subPL: 3.36, GENC: 5, α: 0.69, β: 0.24, COm: 1, γ: 0.12, δ: 0.94, maxDev: 3.79, speed:2.29, crossed: 0, with: 0
+
+WC: -4, RC: -42, AC: 54, APC: 0, TC: 51, PopS: 2, subPC: 4, subPL: 3.48, GENC: 6, α: 0.97, β: 0.99, COm: 1, γ: 0.56, δ: 0.02, maxDev: 3.58, speed:2.75, crossed: 1, with: 4.3
+WC: -99, RC: 75, AC: 60, APC: 0, TC: -97, PopS: 6, subPC: 4, subPL: 3.36, GENC: 5, α: 0.69, β: 0.24, COm: 1, γ: 0.12, δ: 0.94, maxDev: 3.79, speed:2.29, crossed: 0, with: 0
+
+WC: -57, RC: 47, AC: -16, APC: 0, TC: 93, PopS: 7, subPC: 4, subPL: 2.31, GENC: 2, α: 0.30, β: 0.97, COm: 1, γ: 0.01, δ: 0.42, maxDev: 4.18, speed:2.66, crossed: 1, with: 1.8
+WC: -11, RC: -14, AC: 63, APC: 0, TC: -8, PopS: 5, subPC: 2, subPL: 1.02, GENC: 1, α: 0.97, β: 0.41, COm: 1, γ: 0.53, δ: 0.49, maxDev: 1.95, speed:1.88, crossed: 0, with: 0
+
+WC: -136, RC: -275, AC: -24, APC: 0, TC: 42, PopS: 8, subPC: 3, subPL: 3.51, GENC: 4, α: 0.48, β: 0.81, COm: 1, γ: 0.61, δ: 0.48, maxDev: 3.74, speed:2.10, crossed: 1, with: 3.9
+WC: -147, RC: 60, AC: 74, APC: -89, TC: -39, PopS: 3, subPC: 4, subPL: 2.84, GENC: 6, α: 0.34, β: 0.54, COm: 1, γ: 0.81, δ: 0.17, maxDev: 1.52, speed:2.19, crossed: 0, with: 0
+
+WC: -74, RC: 18, AC: -172, APC: 0, TC: -76, PopS: 5, subPC: 4, subPL: 2.95, GENC: 5, α: 0.40, β: 0.23, COm: 1, γ: 0.66, δ: 0.52, maxDev: 3.41, speed:2.11, crossed: 1, with: 4.0
+WC: -69, RC: 54, AC: 27, APC: 0, TC: 69, PopS: 2, subPC: 3, subPL: 2.74, GENC: 4, α: 0.92, β: 0.23, COm: 1, γ: 0.07, δ: 0.60, maxDev: 4.85, speed:1.54, crossed: 0, with: 0
+
+WC: -58, RC: 32, AC: 87, APC: -133, TC: -24, PopS: 7, subPC: 4, subPL: 0.58, GENC: 4, α: 0.36, β: 0.54, COm: 1, γ: 0.61, δ: 0.40, maxDev: 3.93, speed:1.66, crossed: 1, with: 2.9
+WC: -147, RC: 60, AC: 48, APC: -35, TC: -39, PopS: 3, subPC: 4, subPL: 2.84, GENC: 6, α: 0.34, β: 0.54, COm: 1, γ: 0.81, δ: 0.17, maxDev: 2.73, speed:1.47, crossed: 0, with: 0
+
+WC: -98, RC: -42, AC: -86, APC: 24, TC: -11, PopS: 7, subPC: 4, subPL: 2.95, GENC: 2, α: 0.42, β: 0.62, COm: 1, γ: 0.34, δ: 0.56, maxDev: 4.05, speed:2.32, crossed: 1, with: 3.0
+WC: -147, RC: 72, AC: -30, APC: 45, TC: -164, PopS: 3, subPC: 4, subPL: 2.55, GENC: 6, α: 0.71, β: 0.25, COm: 1, γ: 0.14, δ: 0.60, maxDev: 3.86, speed:1.47, crossed: 0, with: 0
+
+WC: -80, RC: -65, AC: 36, APC: 0, TC: 70, PopS: 2, subPC: 3, subPL: 1.76, GENC: 6, α: 0.00, β: 0.24, COm: 1, γ: 0.77, δ: 0.74, maxDev: 2.48, speed:2.54, crossed: 1, with: 4.3
+WC: -78, RC: 60, AC: 79, APC: 0, TC: -100, PopS: 4, subPC: 3, subPL: 2.25, GENC: 4, α: 0.10, β: 0.89, COm: 1, γ: 0.16, δ: 0.72, maxDev: 2.78, speed:1.10, crossed: 0, with: 0
+
+WC: -80, RC: -65, AC: 36, APC: 0, TC: 70, PopS: 2, subPC: 3, subPL: 1.76, GENC: 6, α: 0.00, β: 0.24, COm: 1, γ: 0.77, δ: 0.74, maxDev: 2.48, speed:2.54, crossed: 1, with: 2.0
+WC: -78, RC: 60, AC: 79, APC: 0, TC: -100, PopS: 4, subPC: 3, subPL: 2.25, GENC: 4, α: 0.10, β: 0.89, COm: 1, γ: 0.16, δ: 0.72, maxDev: 2.78, speed:1.10, crossed: 0, with: 0
+
+WC: -193, RC: -42, AC: -86, APC: -64, TC: -11, PopS: 7, subPC: 4, subPL: 2.95, GENC: 2, α: 0.42, β: 0.62, COm: 1, γ: 0.34, δ: 0.56, maxDev: 4.05, speed:2.32, crossed: 1, with: 1.8
+WC: -100, RC: 72, AC: -30, APC: 24, TC: -164, PopS: 3, subPC: 4, subPL: 2.55, GENC: 6, α: 0.02, β: 0.25, COm: 1, γ: 0.14, δ: 0.01, maxDev: 3.86, speed:1.47, crossed: 0, with: 0
+
+WC: -193, RC: -17, AC: -9, APC: -64, TC: -114, PopS: 7, subPC: 4, subPL: 3.55, GENC: 9, α: 0.68, β: 0.81, COm: 1, γ: 0.73, δ: 0.05, maxDev: 4.03, speed:2.32, crossed: 1, with: 4.4
+WC: -100, RC: 18, AC: -30, APC: 19, TC: -109, PopS: 7, subPC: 4, subPL: 3.70, GENC: 6, α: 0.02, β: 0.72, COm: 1, γ: 0.40, δ: 0.01, maxDev: 1.41, speed:1.10, crossed: 0, with: 0
+
+WC: -193, RC: -17, AC: -9, APC: -64, TC: -114, PopS: 7, subPC: 4, subPL: 3.55, GENC: 9, α: 0.68, β: 0.81, COm: 1, γ: 0.73, δ: 0.05, maxDev: 4.03, speed:2.32, crossed: 1, with: 1.1
+WC: -15, RC: 92, AC: -22, APC: 0, TC: -19, PopS: 8, subPC: 4, subPL: 1.53, GENC: 7, α: 0.06, β: 0.39, COm: 1, γ: 0.90, δ: 0.33, maxDev: 2.25, speed:1.59, crossed: 0, with: 0
+
+WC: 63, RC: -61, AC: 73, APC: 0, TC: -66, PopS: 9, subPC: 4, subPL: 3.37, GENC: 4, α: 0.10, β: 0.30, COm: 1, γ: 0.30, δ: 0.33, maxDev: 3.80, speed:2.57, crossed: 1, with: 0.4
+WC: 27, RC: -1, AC: 17, APC: 62, TC: 73, PopS: 8, subPC: 2, subPL: 3.32, GENC: 7, α: 0.56, β: 0.82, COm: 1, γ: 0.77, δ: 0.83, maxDev: 4.71, speed:1.89, crossed: 0, with: 0
+
+WC: 63, RC: -61, AC: 73, APC: 0, TC: -66, PopS: 9, subPC: 4, subPL: 3.37, GENC: 4, α: 0.10, β: 0.30, COm: 1, γ: 0.30, δ: 0.33, maxDev: 3.80, speed:2.57, crossed: 1, with: 2.3
+WC: 27, RC: -1, AC: 17, APC: 62, TC: 73, PopS: 8, subPC: 2, subPL: 3.32, GENC: 7, α: 0.56, β: 0.82, COm: 1, γ: 0.77, δ: 0.83, maxDev: 4.71, speed:1.89, crossed: 0, with: 0
+
+WC: -69, RC: 54, AC: 27, APC: 0, TC: 69, PopS: 2, subPC: 3, subPL: 2.74, GENC: 4, α: 0.92, β: 0.23, COm: 1, γ: 0.07, δ: 0.05, maxDev: 4.85, speed:1.54, crossed: 1, with: 1.1
+WC: -74, RC: 18, AC: -172, APC: 0, TC: -76, PopS: 5, subPC: 4, subPL: 2.95, GENC: 5, α: 0.40, β: 0.38, COm: 1, γ: 0.66, δ: 0.52, maxDev: 1.04, speed:2.11, crossed: 0, with: 0
+
+WC: -15, RC: 92, AC: -22, APC: 0, TC: -19, PopS: 8, subPC: 4, subPL: 1.53, GENC: 7, α: 0.17, β: 0.39, COm: 1, γ: 0.90, δ: 0.99, maxDev: 2.25, speed:1.59, crossed: 1, with: 4.3
+WC: -161, RC: 23, AC: -92, APC: -64, TC: -75, PopS: 7, subPC: 4, subPL: 1.80, GENC: 9, α: 0.68, β: 0.12, COm: 1, γ: 0.90, δ: 0.36, maxDev: 4.74, speed:1.36, crossed: 0, with: 0
+
+WC: -6, RC: 22, AC: 40, APC: 0, TC: 48, PopS: 7, subPC: 2, subPL: 3.85, GENC: 3, α: 0.44, β: 0.50, COm: 1, γ: 0.65, δ: 0.85, maxDev: 1.66, speed:2.46, crossed: 1, with: 1.0
+WC: -8, RC: -74, AC: 85, APC: 0, TC: 81, PopS: 5, subPC: 4, subPL: 1.61, GENC: 8, α: 0.03, β: 0.48, COm: 1, γ: 0.06, δ: 0.89, maxDev: 3.40, speed:2.12, crossed: 0, with: 0
+
+WC: -6, RC: 22, AC: 40, APC: 0, TC: 48, PopS: 3, subPC: 2, subPL: 3.85, GENC: 3, α: 0.44, β: 0.79, COm: 1, γ: 0.65, δ: 0.25, maxDev: 1.66, speed:2.46, crossed: 1, with: 4.0
+WC: 36, RC: -74, AC: 85, APC: 59, TC: 81, PopS: 9, subPC: 4, subPL: 1.61, GENC: 8, α: 0.03, β: 0.48, COm: 1, γ: 0.27, δ: 0.89, maxDev: 4.47, speed:2.12, crossed: 0, with: 0
+
+WC: -64, RC: 72, AC: -22, APC: 0, TC: 88, PopS: 8, subPC: 4, subPL: 3.56, GENC: 9, α: 0.96, β: 0.61, COm: 1, γ: 0.37, δ: 0.90, maxDev: 1.63, speed:2.55, crossed: 1, with: 0.01
+WC: -91, RC: 17, AC: 9, APC: 0, TC: -72, PopS: 2, subPC: 2, subPL: 1.74, GENC: 9, α: 0.18, β: 0.29, COm: 1, γ: 0.98, δ: 0.94, maxDev: 1.82, speed:2.51, crossed: 0, with: 0
+
+WC: 99, RC: 78, AC: -55, APC: 0, TC: -20, PopS: 6, subPC: 4, subPL: 3.36, GENC: 2, α: 0.57, β: 0.92, COm: 1, γ: 0.23, δ: 0.89, maxDev: 4.09, speed:2.61, crossed: 1, with: 2.5
+WC: 18, RC: 94, AC: -80, APC: 0, TC: 68, PopS: 2, subPC: 3, subPL: 2.08, GENC: 5, α: 0.90, β: 0.64, COm: 1, γ: 0.88, δ: 0.66, maxDev: 1.76, speed:2.18, crossed: 0, with: 0
+
+WC: -51, RC: 75, AC: 97, APC: 0, TC: -10, PopS: 2, subPC: 3, subPL: 3.78, GENC: 4, α: 0.96, β: 0.50, COm: 1, γ: 0.14, δ: 0.47, maxDev: 2.40, speed:2.45, crossed: 1, with: 4.49
+WC: -94, RC: -21, AC: 71, APC: 33, TC: 2, PopS: 3, subPC: 4, subPL: 1.57, GENC: 4, α: 0.54, β: 0.30, COm: 1, γ: 0.23, δ: 0.19, maxDev: 1.86, speed:1.76, crossed: 0, with: 0
+
+WC: -51, RC: 75, AC: 97, APC: 0, TC: -10, PopS: 2, subPC: 3, subPL: 3.78, GENC: 4, α: 0.96, β: 0.50, COm: 1, γ: 0.14, δ: 0.47, maxDev: 2.40, speed:2.45, crossed: 1, with: 3.6
+WC: -94, RC: -21, AC: 71, APC: 33, TC: 2, PopS: 3, subPC: 4, subPL: 1.57, GENC: 4, α: 0.54, β: 0.30, COm: 1, γ: 0.23, δ: 0.19, maxDev: 1.86, speed:1.76, crossed: 0, with: 0
+
+WC: 5, RC: 72, AC: -22, APC: -19, TC: 88, PopS: 8, subPC: 4, subPL: 3.56, GENC: 9, α: 0.96, β: 0.61, COm: 1, γ: 0.37, δ: 0.90, maxDev: 1.63, speed:2.55, crossed: 1, with: 3.5
+WC: -58, RC: -46, AC: 9, APC: 22, TC: -72, PopS: 2, subPC: 2, subPL: 1.74, GENC: 9, α: 0.31, β: 0.29, COm: 1, γ: 0.98, δ: 0.94, maxDev: 1.82, speed:2.51, crossed: 0, with: 0

@@ -1,0 +1,143 @@
+
+==================== FINAL INTERFACE ====================
+2016-04-18 21:36:14.072228 UTC
+
+interface main@main:Main 7103
+  interface hash: d009e6e3687c9423bfbc777cbad56e0b
+  ABI hash: 3f54a4759a760fb6dc2da178ff22b7e5
+  export-list hash: e8557bb5bb3051fc0b62efc36f988f6d
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: d42c781662263be5a81c39c7dcbcc1b0
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Main.getData
+  Main.main
+module dependencies:
+package dependencies: base-4.8.2.0* ghc-prim-0.4.0.0
+                      hycogen-plots-0.1.0.0@hycog_25x0iaQiCk9Lw4BqRmRuNN
+                      integer-gmp-1.0.0.0 split-0.2.3@split_CDzOynTh4l8Ahg1HaWUL4Z
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Monoid
+                         base-4.8.2.0:Data.Type.Equality base-4.8.2.0:GHC.Generics
+import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
+import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  base-4.8.2.0:System.IO 0248c1e850b7ea124cf7a2e1669ebf67
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
+import  -/  hycogen-plots-0.1.0.0@hycog_25x0iaQiCk9Lw4BqRmRuNN:SimpleStatistics 6eb2d3e6fe84b8d6e86b881d7c037e35
+import  -/  split-0.2.3@split_CDzOynTh4l8Ahg1HaWUL4Z:Data.List.Split 0ce5c537605fc9ad887ec02865b54394
+import  -/  split-0.2.3@split_CDzOynTh4l8Ahg1HaWUL4Z:Data.List.Split.Internals 963ae3cccb2c92e36d269de482ab8341
+0c8113ed7c058bcfb485d94d10e8cf93
+  $wunsafeDrop :: GHC.Prim.Int# -> [a1] -> [a1]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U><S,1*U>,
+     Inline: [0] -}
+444ff5663f1ee90819f49745374cd9d1
+  $wunsafeDrop1 :: GHC.Prim.Int# -> [a1] -> [a1]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U><S,1*U>,
+     Inline: [0] -}
+06df90d6665fdddc41a6c9afe507da5a
+  getData :: GHC.Types.IO [[GHC.Base.String]]
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Main.getData1
+                  `cast`
+                (Sym (GHC.Types.NTCo:IO[0] <[[GHC.Base.String]]>_R)) -}
+e1c2f17fa9c326cf647046f81a91390a
+  getData1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Base.String]] #)
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case GHC.IO.Handle.FD.openFile1
+                        Main.getData7
+                        GHC.IO.IOMode.ReadMode
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case GHC.IO.Handle.Text.hGetContents1
+                        ipv1
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 (# ipv2,
+                    GHC.Base.map
+                      @ [GHC.Types.Char]
+                      @ [[GHC.Types.Char]]
+                      Main.getData2
+                      (Data.OldList.lines ipv3) #) } }) -}
+40a3d29e068d10fb17c309f3461b362e
+  getData2 :: [GHC.Types.Char] -> [[GHC.Types.Char]]
+  {- Arity: 1,
+     Unfolding: (\ x :: [GHC.Types.Char] ->
+                 GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ [GHC.Types.Char]
+                   Main.getData5
+                   (Main.getData3 x)) -}
+6e0ac01a8f937fcc489291e6e1636f9b
+  getData3 :: [GHC.Types.Char] -> [[GHC.Types.Char]]
+  {- Unfolding: (Data.List.Split.Internals.splitOn
+                   @ GHC.Types.Char
+                   GHC.Classes.$fEqChar
+                   Main.getData4) -}
+d30b712bb5510eeba50c5ed56f8de50d
+  getData4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# ","#) -}
+cf171c95b04ba97c00ed23b9aeb4ed5b
+  getData5 :: [GHC.Types.Char] -> [GHC.Types.Char]
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ x :: [GHC.Types.Char] ->
+                 Main.$wunsafeDrop1
+                   @ GHC.Types.Char
+                   1
+                   (Main.$wunsafeDrop
+                      @ GHC.Types.Char
+                      1
+                      (GHC.List.dropWhile @ GHC.Types.Char Main.getData6 x))) -}
+581bb9fc6216450e431c8eec83f27a4a
+  getData6 :: GHC.Types.Char -> GHC.Types.Bool
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ ds :: GHC.Types.Char ->
+                 case ds of wild { GHC.Types.C# c1 ->
+                 case c1 of wild1 {
+                   DEFAULT -> GHC.Types.True ':' -> GHC.Types.False } }) -}
+3a9f208e45061cd590106967b667397e
+  getData7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "../data-san.txt"#) -}
+78e93dbe7038762ea07ccdc8c73cbac1
+  main :: GHC.Types.IO ()
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
+cb50038e80028ed2e17ace8402de4124
+  main1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case GHC.IO.Handle.FD.openFile1
+                        Main.getData7
+                        GHC.IO.IOMode.ReadMode
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case GHC.IO.Handle.Text.hGetContents1
+                        ipv1
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 (# ipv2, GHC.Tuple.() #) } }) -}
+76d46522c987c612c73ec0cce979ef25
+  main2 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1,
+     Unfolding: (GHC.TopHandler.runMainIO1
+                   @ ()
+                   Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R))) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

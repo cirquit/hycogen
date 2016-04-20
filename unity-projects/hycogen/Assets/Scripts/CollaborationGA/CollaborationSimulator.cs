@@ -67,14 +67,24 @@ public class CollaborationSimulator : MonoBehaviour
      **/
     public float CalculateFitness()
     {
-        float minDistance = 10; // the field is no longer than 10 units in width so this is the lowest fitness there is
+        float minDistance = 10.0f;
+        int   agentCount  = 0;  
 
         foreach (GameObject agent in GameObject.FindGameObjectsWithTag("Agent"))
         {
-            minDistance = Mathf.Min(agent.transform.position.x - (-5.0f), minDistance);
+            agentCount++;
+            Agent ascript = agent.GetComponent<Agent>();
+            minDistance = Mathf.Min(minDistance, agent.transform.position.x - (-5.0f));
+            Debug.Log("ColSim.cs: pathGA.maxDev:" + ascript.pathGA.maxDeviation + ". minDistance = " + minDistance);
         }
             
-        return 1 / Mathf.Abs(minDistance);
+        if (agentCount < 1)
+        {
+            Debug.Log("ColSim.cs: CalculateFitness - There are not agents to be found, this should never happen");
+            return 0.0f;
+        }
+
+        return Mathf.Abs(minDistance);
     }
 
     public void RemoveAllAgents()
@@ -106,8 +116,13 @@ public class CollaborationSimulator : MonoBehaviour
               //  Debug.Log("Frames...: " + currentFrames);
                 if (maxFrames <= currentFrames)
                 {
-                    population[colCounter].fitness = Mathf.Max(CalculateFitness(), population[colCounter].fitness);
-                    Debug.Log("CollaborationSimulator.cs: Assessed the following fitness: " + population[colCounter].fitness.ToString());
+                    float fitness = CalculateFitness();
+                    population[colCounter].fitness += fitness / simulationCount;
+//                    Debug.Log("CollaborationSimulator.cs: Assessed the following fitness: " + fitness.ToString());
+                    if (fitness <= 4.5)
+                    {
+                        Debug.Log("GOT IT!");
+                    }
                     RemoveAllAgents();
                     ResetFrames();
                     simCounter += 1;

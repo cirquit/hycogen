@@ -1,0 +1,430 @@
+
+==================== FINAL INTERFACE ====================
+2016-04-18 21:36:11.565697 UTC
+
+interface hycog_25x0iaQiCk9Lw4BqRmRuNN:SimpleStatistics 7103
+  interface hash: 7da2af275b6b2684cc4bb83706574959
+  ABI hash: 6eb2d3e6fe84b8d6e86b881d7c037e35
+  export-list hash: 1297e7a8af42176a7b3129522b816c24
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: ef53bf447a82dafeb191e80a67256a10
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  SimpleStatistics.cov
+  SimpleStatistics.createStats
+  SimpleStatistics.pcorr
+  SimpleStatistics.scorr
+  SimpleStatistics.toRank
+  SimpleStatistics.toStat
+  SimpleStatistics.Stat{SimpleStatistics.Stat SimpleStatistics.len SimpleStatistics.mean SimpleStatistics.meanDiff SimpleStatistics.std SimpleStatistics.values SimpleStatistics.var}
+module dependencies:
+package dependencies: base-4.8.2.0* ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Monoid
+                         base-4.8.2.0:Data.Type.Equality base-4.8.2.0:GHC.Generics
+import  -/  base-4.8.2.0:Data.Foldable 2ce969969ad5231eb40bd713f94f05ad
+import  -/  base-4.8.2.0:Data.List 3f0782c8d4bf50eecefcd5ea1798aac8
+import  -/  base-4.8.2.0:Data.Maybe 1cb58de2b04ee3c0c0a7dc9201184aff
+import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
+import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.2.0:GHC.Enum debc6de3086023a15993ab0cecffb90b
+import  -/  base-4.8.2.0:GHC.Float e532d434ec2447d809887c0fca1d78a5
+import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
+import  -/  base-4.8.2.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.2.0:GHC.Real 1281efa9baf803bc7859d7efb89a38b3
+import  -/  base-4.8.2.0:GHC.Show 0e1d8380a8fb0cfb07ebeda3b70cbf38
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+6c3cde61a4ab3c01f5d9d79861df82ba
+  $wscorr ::
+    (GHC.Float.Floating a, GHC.Show.Show a, GHC.Classes.Ord a) =>
+    SimpleStatistics.Stat a -> SimpleStatistics.Stat a -> a
+  {- Arity: 5,
+     Strictness: <S(SLLLLLLLLLLLLLLLLLL),U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U)><L,U(A,C(U),A)><L,U(U(U,U),C(C1(U)),A,A,A,A,A,A)><L,1*U(A,A,A,A,A,1*C1(U))><L,1*U(A,A,A,A,A,1*C1(U))>,
+     Inline: [0],
+     Unfolding: (\ @ a
+                   w :: GHC.Float.Floating a
+                   w1 :: GHC.Show.Show a
+                   w2 :: GHC.Classes.Ord a
+                   w3 :: SimpleStatistics.Stat a
+                   w4 :: SimpleStatistics.Stat a ->
+                 SimpleStatistics.pcorr
+                   @ a
+                   (GHC.Classes.$p1Ord @ a w2)
+                   w
+                   w1
+                   (case SimpleStatistics.$wtoRank
+                           @ a
+                           @ a
+                           w
+                           w
+                           w2
+                           w3 of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                    SimpleStatistics.Stat @ a ww1 ww2 ww3 ww4 ww5 ww6 })
+                   (case SimpleStatistics.$wtoRank
+                           @ a
+                           @ a
+                           w
+                           w
+                           w2
+                           w4 of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                    SimpleStatistics.Stat @ a ww1 ww2 ww3 ww4 ww5 ww6 })) -}
+5cffcfd85362f89ccf5ac8e23dc4cd87
+  $wtoRank ::
+    (GHC.Float.Floating a, GHC.Float.Floating b, GHC.Classes.Ord a) =>
+    SimpleStatistics.Stat a
+    -> (# GHC.Float.Floating b => b,
+          GHC.Float.Floating b => b,
+          GHC.Float.Floating b => b,
+          GHC.Num.Num b => b,
+          GHC.Float.Floating b => [b],
+          GHC.Float.Floating b => [b] #)
+  {- Arity: 4,
+     Strictness: <L,U><L,U(U,A,A,A,C(U),C(C1(U)),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(1*U,1*C(C1(U)),A,A,A,A,A,A)><L,1*U(A,A,A,A,A,1*C1(U))>,
+     Inline: [0],
+     Unfolding: (\ @ a
+                   @ b
+                   w :: GHC.Float.Floating a
+                   w1 :: GHC.Float.Floating b
+                   w2 :: GHC.Classes.Ord a
+                   w3 :: SimpleStatistics.Stat a ->
+                 SimpleStatistics.$wtoStat
+                   @ []
+                   @ GHC.Integer.Type.Integer
+                   @ b
+                   Data.Foldable.$fFoldable[]
+                   GHC.Real.$fRealInteger
+                   w1
+                   (case w3 of wild { SimpleStatistics.Stat ds ds1 ds2 ds3 ds4 ds5 ->
+                    let {
+                      $dEq :: GHC.Classes.Eq a = GHC.Classes.$p1Ord @ a w2
+                    } in
+                    let {
+                      xs :: [a] = ds5 w
+                    } in
+                    let {
+                      values1 :: [(a, GHC.Integer.Type.Integer)]
+                      = GHC.List.zip
+                          @ a
+                          @ GHC.Integer.Type.Integer
+                          (Data.OldList.sortBy @ a (GHC.Classes.compare @ a w2) xs)
+                          SimpleStatistics.scorr1
+                    } in
+                    GHC.Base.map
+                      @ a
+                      @ GHC.Integer.Type.Integer
+                      (\ x :: a ->
+                       case GHC.List.lookup
+                              @ a
+                              @ GHC.Integer.Type.Integer
+                              $dEq
+                              x
+                              values1 of wild1 {
+                         GHC.Base.Nothing -> Data.Maybe.fromJust1 @ GHC.Integer.Type.Integer
+                         GHC.Base.Just x1 -> x1 })
+                      xs })) -}
+e36cba14d17372028732c20835cb2a0c
+  $wtoStat ::
+    (Data.Foldable.Foldable t, GHC.Real.Real a,
+     GHC.Float.Floating b) =>
+    t a
+    -> (# GHC.Float.Floating b => b,
+          GHC.Float.Floating b => b,
+          GHC.Float.Floating b => b,
+          GHC.Num.Num b => b,
+          GHC.Float.Floating b => [b],
+          GHC.Float.Floating b => [b] #)
+  {- Arity: 4,
+     Strictness: <S(LLLLLLLLLC(S)LLLLLL),U(A,A,A,A,A,A,A,A,1*C1(U),1*C1(U),A,A,A,A,A,A)><L,1*U(A,A,1*U)><L,U(1*U,A,A,A,1*C1(U),C(C1(U)),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U>,
+     Inline: [0] -}
+10030c9081ac06b51fc06ef7fe8a2e71
+  type role Stat nominal
+  data Stat b
+    = Stat {mean :: GHC.Float.Floating b => b,
+            var :: GHC.Float.Floating b => b,
+            std :: GHC.Float.Floating b => b,
+            len :: GHC.Num.Num b => b,
+            meanDiff :: GHC.Float.Floating b => [b],
+            values :: GHC.Float.Floating b => [b]}
+887064db28d25116ac0c8d16fdae6887
+  cov ::
+    (GHC.Show.Show a, GHC.Classes.Eq a, GHC.Float.Floating a) =>
+    SimpleStatistics.Stat a -> SimpleStatistics.Stat a -> a
+  {- Arity: 5,
+     Strictness: <L,U(A,C(U),A)><S(LC(C(S))),1*U(A,1*C1(C1(U)))><S(SLLLLLLLLLLLLLLLLLL),U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U)><L,U(A,A,A,C(U),1*C1(U),A)><L,U(A,A,A,C(U),1*C1(U),A)>,
+     Unfolding: (\ @ a
+                   $dShow :: GHC.Show.Show a
+                   $dEq :: GHC.Classes.Eq a
+                   $dFloating :: GHC.Float.Floating a
+                   eta :: SimpleStatistics.Stat a
+                   eta1 :: SimpleStatistics.Stat a ->
+                 let {
+                   $dFractional :: GHC.Real.Fractional a
+                   = GHC.Float.$p1Floating @ a $dFloating
+                 } in
+                 let {
+                   $dNum :: GHC.Num.Num a = GHC.Real.$p1Fractional @ a $dFractional
+                 } in
+                 case GHC.Classes./=
+                        @ a
+                        $dEq
+                        (case eta of wild { SimpleStatistics.Stat ds ds1 ds2 ds3 ds4 ds5 ->
+                         ds3 $dNum })
+                        (case eta1 of wild { SimpleStatistics.Stat ds ds1 ds2 ds3 ds4 ds5 ->
+                         ds3 $dNum }) of wild {
+                   GHC.Types.False
+                   -> GHC.Real./
+                        @ a
+                        $dFractional
+                        (case eta of wild1 { SimpleStatistics.Stat ds ds1 ds2 ds3 ds4 ds5 ->
+                         let {
+                           k :: a -> a -> a = GHC.Num.+ @ a $dNum
+                         } in
+                         let {
+                           f :: a -> a -> a = GHC.Num.* @ a $dNum
+                         } in
+                         letrec {
+                           go :: [a] -> [a] -> a -> a
+                             {- Arity: 3, Strictness: <S,1*U><L,1*U><L,U> -}
+                           = \ ds6 :: [a] _ys :: [a] eta2 :: a ->
+                             case ds6 of wild2 {
+                               [] -> eta2
+                               : ipv ipv1
+                               -> case _ys of wild3 {
+                                    [] -> eta2 : ipv2 ipv3 -> go ipv1 ipv3 (k eta2 (f ipv ipv2)) } }
+                         } in
+                         go
+                           (ds4 $dFloating)
+                           (case eta1 of wild2 { SimpleStatistics.Stat ds6 ds7 ds8 ds9 ds10 ds11 ->
+                            ds10 $dFloating })
+                           (GHC.Num.fromInteger @ a $dNum SimpleStatistics.cov2) })
+                        (case eta of wild1 { SimpleStatistics.Stat ds ds1 ds2 ds3 ds4 ds5 ->
+                         ds3 $dNum })
+                   GHC.Types.True
+                   -> SimpleStatistics.cov1 @ a eta1 eta $dShow $dNum }) -}
+00776d1bcc20720626c3259f432dd77e
+  cov1 ::
+    SimpleStatistics.Stat a
+    -> SimpleStatistics.Stat a -> (GHC.Show.Show a, GHC.Num.Num a) => a
+  {- Arity: 4, Strictness: <L,U><L,U><L,U><L,U>b -}
+78f8c3c6ae0d3e019f0a91e598f3d280
+  cov2 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (__integer 0) -}
+064c3449132c09e7e5d5d3b2e16afc11
+  createStats ::
+    (GHC.Float.Floating b, GHC.Float.Floating b1, GHC.Real.Real a,
+     GHC.Real.Real a1) =>
+    [a1]
+    -> (a1 -> a) -> (SimpleStatistics.Stat b1, SimpleStatistics.Stat b)
+  {- Arity: 6,
+     Strictness: <L,U(U,A,A,A,C(U),C(C1(U)),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(U,A,A,A,C(U),C(C1(U)),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,1*U(A,A,1*U)><L,1*U(A,A,1*U)><L,U><L,C(U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (6, True, False)
+                (\ @ a1
+                   @ a
+                   @ b1
+                   @ b
+                   w :: GHC.Float.Floating b
+                   w1 :: GHC.Float.Floating b1
+                   w2 :: GHC.Real.Real a
+                   w3 :: GHC.Real.Real a1
+                   w4 :: [a1]
+                   w5 :: a1 -> a ->
+                 case SimpleStatistics.$wtoStat
+                        @ []
+                        @ a
+                        @ b
+                        Data.Foldable.$fFoldable[]
+                        w2
+                        w
+                        (GHC.Base.map
+                           @ a1
+                           @ a
+                           w5
+                           w4) of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 case SimpleStatistics.$wtoStat
+                        @ []
+                        @ a1
+                        @ b1
+                        Data.Foldable.$fFoldable[]
+                        w3
+                        w1
+                        w4 of ww7 { (#,,,,,#) ww8 ww9 ww10 ww11 ww12 ww13 ->
+                 (SimpleStatistics.Stat @ b1 ww8 ww9 ww10 ww11 ww12 ww13,
+                  SimpleStatistics.Stat @ b ww1 ww2 ww3 ww4 ww5 ww6) } }) -}
+953f2a439ab5410452cdef72d730c012
+  len :: GHC.Num.Num b => SimpleStatistics.Stat b -> b
+  RecSel SimpleStatistics.Stat
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U><S(LLLC(S)LL),1*U(A,A,A,1*C1(U),A,A)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ b $dNum :: GHC.Num.Num b ds :: SimpleStatistics.Stat b ->
+                 case ds of wild { SimpleStatistics.Stat ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds4 $dNum }) -}
+e4db7474ccd0ace4e8e48d50465b2d09
+  mean :: GHC.Float.Floating b => SimpleStatistics.Stat b -> b
+  RecSel SimpleStatistics.Stat
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U><S(C(S)LLLLL),1*U(1*C1(U),A,A,A,A,A)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ b
+                   $dFloating :: GHC.Float.Floating b
+                   ds :: SimpleStatistics.Stat b ->
+                 case ds of wild { SimpleStatistics.Stat ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds1 $dFloating }) -}
+3dc802c66214cd7340b0c3b8a6138342
+  meanDiff :: GHC.Float.Floating b => SimpleStatistics.Stat b -> [b]
+  RecSel SimpleStatistics.Stat
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U><S(LLLLC(S)L),1*U(A,A,A,A,1*C1(U),A)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ b
+                   $dFloating :: GHC.Float.Floating b
+                   ds :: SimpleStatistics.Stat b ->
+                 case ds of wild { SimpleStatistics.Stat ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds5 $dFloating }) -}
+660d52e1cc3444edaa35f2177e255b23
+  pcorr ::
+    (GHC.Classes.Eq a, GHC.Float.Floating a, GHC.Show.Show a) =>
+    SimpleStatistics.Stat a -> SimpleStatistics.Stat a -> a
+  {- Arity: 5,
+     Strictness: <L,1*U(A,1*C1(C1(U)))><S(SLLLLLLLLLLLLLLLLLL),U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U)><L,U(A,C(U),A)><L,U(A,A,1*C1(U),C(U),C(U),A)><L,U(A,A,1*C1(U),C(U),C(U),A)>,
+     Unfolding: (\ @ a
+                   $dEq :: GHC.Classes.Eq a
+                   $dFloating :: GHC.Float.Floating a
+                   $dShow :: GHC.Show.Show a
+                   eta :: SimpleStatistics.Stat a
+                   eta1 :: SimpleStatistics.Stat a ->
+                 let {
+                   $dFractional :: GHC.Real.Fractional a
+                   = GHC.Float.$p1Floating @ a $dFloating
+                 } in
+                 GHC.Real./
+                   @ a
+                   $dFractional
+                   (SimpleStatistics.cov @ a $dShow $dEq $dFloating eta eta1)
+                   (GHC.Num.*
+                      @ a
+                      (GHC.Real.$p1Fractional @ a $dFractional)
+                      (case eta of wild { SimpleStatistics.Stat ds ds1 ds2 ds3 ds4 ds5 ->
+                       ds2 $dFloating })
+                      (case eta1 of wild { SimpleStatistics.Stat ds ds1 ds2 ds3 ds4 ds5 ->
+                       ds2 $dFloating }))) -}
+b32e92ea3472e078ee2c226e28db71ac
+  scorr ::
+    (GHC.Classes.Eq a, GHC.Float.Floating a, GHC.Show.Show a,
+     GHC.Classes.Ord a) =>
+    SimpleStatistics.Stat a -> SimpleStatistics.Stat a -> a
+  {- Arity: 6,
+     Strictness: <L,A><S(SLLLLLLLLLLLLLLLLLL),U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U)><L,U(A,C(U),A)><L,U(U(U,U),C(C1(U)),A,A,A,A,A,A)><L,1*U(A,A,A,A,A,1*C1(U))><L,1*U(A,A,A,A,A,1*C1(U))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (6, True, True)
+                (\ @ a
+                   w :: GHC.Classes.Eq a
+                   w1 :: GHC.Float.Floating a
+                   w2 :: GHC.Show.Show a
+                   w3 :: GHC.Classes.Ord a
+                   w4 :: SimpleStatistics.Stat a
+                   w5 :: SimpleStatistics.Stat a ->
+                 SimpleStatistics.$wscorr @ a w1 w2 w3 w4 w5) -}
+eb4700b8099bc6c871cb718785c340cc
+  scorr1 :: [GHC.Integer.Type.Integer]
+  {- Unfolding: (case GHC.Enum.$wenumDeltaInteger
+                        SimpleStatistics.scorr2
+                        SimpleStatistics.scorr2 of ww { (#,#) ww1 ww2 ->
+                 GHC.Types.: @ GHC.Integer.Type.Integer ww1 ww2 }) -}
+58ff3d4251e7668f813071b3468b82e3
+  scorr2 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (__integer 1) -}
+3434cdda0bc1d9cfeb19a9c2c2c64cfc
+  std :: GHC.Float.Floating b => SimpleStatistics.Stat b -> b
+  RecSel SimpleStatistics.Stat
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U><S(LLC(S)LLL),1*U(A,A,1*C1(U),A,A,A)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ b
+                   $dFloating :: GHC.Float.Floating b
+                   ds :: SimpleStatistics.Stat b ->
+                 case ds of wild { SimpleStatistics.Stat ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds3 $dFloating }) -}
+9b4724813169143b5a01460f68c33202
+  toRank ::
+    (GHC.Float.Floating a, GHC.Float.Floating b, GHC.Classes.Ord a) =>
+    SimpleStatistics.Stat a -> SimpleStatistics.Stat b
+  {- Arity: 4,
+     Strictness: <L,U><L,U(U,A,A,A,C(U),C(C1(U)),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(1*U,1*C(C1(U)),A,A,A,A,A,A)><L,1*U(A,A,A,A,A,1*C1(U))>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ @ a
+                   @ b
+                   w :: GHC.Float.Floating a
+                   w1 :: GHC.Float.Floating b
+                   w2 :: GHC.Classes.Ord a
+                   w3 :: SimpleStatistics.Stat a ->
+                 case SimpleStatistics.$wtoRank
+                        @ a
+                        @ b
+                        w
+                        w1
+                        w2
+                        w3 of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 SimpleStatistics.Stat @ b ww1 ww2 ww3 ww4 ww5 ww6 }) -}
+ab3f5567b58690d12780b13537656e40
+  toStat ::
+    (Data.Foldable.Foldable t, GHC.Real.Real a,
+     GHC.Float.Floating b) =>
+    t a -> SimpleStatistics.Stat b
+  {- Arity: 4,
+     Strictness: <S(LLLLLLLLLC(S)LLLLLL),U(A,A,A,A,A,A,A,A,1*C1(U),1*C1(U),A,A,A,A,A,A)><L,1*U(A,A,1*U)><L,U(1*U,A,A,A,1*C1(U),C(C1(U)),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ @ (t :: * -> *)
+                   @ a
+                   @ b
+                   w :: Data.Foldable.Foldable t
+                   w1 :: GHC.Real.Real a
+                   w2 :: GHC.Float.Floating b
+                   w3 :: t a ->
+                 case SimpleStatistics.$wtoStat
+                        @ t
+                        @ a
+                        @ b
+                        w
+                        w1
+                        w2
+                        w3 of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 SimpleStatistics.Stat @ b ww1 ww2 ww3 ww4 ww5 ww6 }) -}
+a83966c5a314311fc6efe4a506179ae4
+  values :: GHC.Float.Floating b => SimpleStatistics.Stat b -> [b]
+  RecSel SimpleStatistics.Stat
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U><S(LLLLLC(S)),1*U(A,A,A,A,A,1*C1(U))>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ b
+                   $dFloating :: GHC.Float.Floating b
+                   ds :: SimpleStatistics.Stat b ->
+                 case ds of wild { SimpleStatistics.Stat ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds6 $dFloating }) -}
+e6f94170bdb6eb14dd3f6b7aa0fea24c
+  var :: GHC.Float.Floating b => SimpleStatistics.Stat b -> b
+  RecSel SimpleStatistics.Stat
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U><S(LC(S)LLLL),1*U(A,1*C1(U),A,A,A,A)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ b
+                   $dFloating :: GHC.Float.Floating b
+                   ds :: SimpleStatistics.Stat b ->
+                 case ds of wild { SimpleStatistics.Stat ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds2 $dFloating }) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

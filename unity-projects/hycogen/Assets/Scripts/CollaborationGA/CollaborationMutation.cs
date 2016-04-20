@@ -37,11 +37,8 @@ public class CollaborationMutation
 
         for (int i = 0; i < c.agentSCount; i++)
         {
-            if (delta >= Random.Range(0.0f, 1.0f))
-            {
-                AgentSettings newAS = Mutate(c.agentSList.ElementAt(i));
-                newAgentSList.Add(newAS);
-            }
+            AgentSettings newAS = Mutate(c.agentSCount, c.agentSList.ElementAt(i));
+            newAgentSList.Add(newAS);
         }
 
         c.agentSList = newAgentSList;
@@ -51,69 +48,72 @@ public class CollaborationMutation
 
 
     /*
-     * if the AgentSetting was chosen to be mutated, it will mutate ALL the settings randomly
-     * if new settings will be
+     * delta is the percentage of how much the whole Collaboration should be mutated
+     * mutating a single agentsetting is therefor delta / agentSCount
      **/
-    public AgentSettings Mutate(AgentSettings a)
+    public AgentSettings Mutate(int agentSCount, AgentSettings a)
     {
         for (int i = 0; i < AgentSettings.settingsCount; i++)
         {
-            switch (i)
+            if (delta / agentSCount  >= Random.Range(0.0f, 1.0f))
             {
-                case 0:
-                    a.pathGA.wallCollision = MutateInt(a.pathGA.wallCollision, Collaboration.collisionBounds);
-                    break;
-                case 1:
-                    a.pathGA.riverCollision = MutateInt(a.pathGA.riverCollision, Collaboration.collisionBounds);
-                    break;
-                case 2:
-                    a.pathGA.agentCollision = MutateInt(a.pathGA.agentCollision, Collaboration.collisionBounds);
-                    break;
-                case 3:
-                    a.pathGA.agentPathCollision = MutateInt(a.pathGA.agentPathCollision, Collaboration.collisionBounds);
-                    break;
-                case 4:
-                    a.pathGA.targetCollision = MutateInt(a.pathGA.targetCollision, Collaboration.collisionBounds);
-                    break;
-                case 5:
-                    a.pathGA.popSize = MutateInt(a.pathGA.popSize, Collaboration.popSizeBounds);
-                    break;
-                case 6:
-                    a.pathGA.subPathCount = MutateInt(a.pathGA.subPathCount, Collaboration.subPathCountBounds);
-                    break;
-                case 7:
-                    a.pathGA.subPathLength = MutateFloat(a.pathGA.subPathLength, Collaboration.subPathLengthBounds);
-                    break;
-                case 8:
-                    a.pathGA.generationCount = MutateInt(a.pathGA.generationCount, Collaboration.generationCountBounds);
-                    break;
-                case 9:
-                    a.pathGA.subPathLength = MutateFloat(a.pathGA.subPathLength, Collaboration.subPathLengthBounds);
-                    break;
-                case 10:
-                    a.pathGA.alpha = MutateFloat(a.pathGA.alpha, Collaboration.greekBounds);
-                    break;
-                case 11:
-                    a.pathGA.beta = MutateFloat(a.pathGA.beta, Collaboration.greekBounds);
-                    break;
-                case 12:
-                    a.pathGA.gamma = MutateFloat(a.pathGA.gamma, Collaboration.greekBounds);
-                    break;
-                case 13:
-                    a.pathGA.delta = MutateFloat(a.pathGA.delta, Collaboration.greekBounds);
-                    break;
-                case 14:
-                    a.pathGA.mode = MutateInt(a.pathGA.mode, Collaboration.modeBounds);
-                    break;
-                case 15:
-                    a.pathGA.maxDeviation = MutateFloat(a.pathGA.maxDeviation, Collaboration.maxDeviationBounds);
-                    break;
-                case 16:
-                    a.speed = MutateFloat(a.speed, Collaboration.speedBounds);
-                    break;
-                default:
-                    Debug.Log("CollaborationMutation.cs: a setting was added to AgentSettings and this case was not processed: " + i.ToString());
-                    break;
+                switch (i)
+                {
+                    case 0:
+                        a.pathGA.wallCollision = MutateInt(a.pathGA.wallCollision, Collaboration.collisionBounds);
+                        break;
+                    case 1:
+                        a.pathGA.riverCollision = MutateInt(a.pathGA.riverCollision, Collaboration.collisionBounds);
+                        break;
+                    case 2:
+                        a.pathGA.agentCollision = MutateInt(a.pathGA.agentCollision, Collaboration.collisionBounds);
+                        break;
+                    case 3:
+                        a.pathGA.agentPathCollision = MutateInt(a.pathGA.agentPathCollision, Collaboration.collisionBounds);
+                        break;
+                    case 4:
+                        a.pathGA.targetCollision = MutateInt(a.pathGA.targetCollision, Collaboration.collisionBounds);
+                        break;
+                    case 5:
+                        a.pathGA.popSize = MutateInt(a.pathGA.popSize, Collaboration.popSizeBounds);
+                        break;
+                    case 6:
+                        a.pathGA.subPathCount = MutateInt(a.pathGA.subPathCount, Collaboration.subPathCountBounds);
+                        break;
+                    case 7:
+                        a.pathGA.subPathLength = MutateFloat(a.pathGA.subPathLength, Collaboration.subPathLengthBounds);
+                        break;
+                    case 8:
+                        a.pathGA.generationCount = MutateInt(a.pathGA.generationCount, Collaboration.generationCountBounds);
+                        break;
+                    case 9:
+                        a.pathGA.subPathLength = MutateFloat(a.pathGA.subPathLength, Collaboration.subPathLengthBounds);
+                        break;
+                    case 10:
+                        a.pathGA.alpha = MutateFloat(a.pathGA.alpha, Collaboration.greekBounds);
+                        break;
+                    case 11:
+                        a.pathGA.beta = MutateFloat(a.pathGA.beta, Collaboration.greekBounds);
+                        break;
+                    case 12:
+                        a.pathGA.gamma = MutateFloat(a.pathGA.gamma, Collaboration.greekBounds);
+                        break;
+                    case 13:
+                        a.pathGA.delta = MutateFloat(a.pathGA.delta, Collaboration.greekBounds);
+                        break;
+                    case 14:
+                        a.pathGA.mode = MutateInt(a.pathGA.mode, Collaboration.modeBounds);
+                        break;
+                    case 15:
+                        a.pathGA.maxDeviation = MutateFloat(a.pathGA.maxDeviation, Collaboration.maxDeviationBounds);
+                        break;
+                    case 16:
+                        a.speed = MutateFloat(a.speed, Collaboration.speedBounds);
+                        break;
+                    default:
+                        Debug.Log("CollaborationMutation.cs: a setting was added to AgentSettings and this case was not processed: " + i.ToString());
+                        break;
+                }
             }
         }
 
